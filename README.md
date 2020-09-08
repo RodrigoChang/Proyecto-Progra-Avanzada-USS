@@ -1,6 +1,6 @@
-Proyecto_Progra_Avanzada
+# Proyecto Programación Avanzada
 
-#Integrantes
-*Rodrigo Chang
-*Matias Rietta
-*Fabián Estefania
+## Integrantes
+* Rodrigo Chang
+* Matias Rietta
+* Fabián Estefania
