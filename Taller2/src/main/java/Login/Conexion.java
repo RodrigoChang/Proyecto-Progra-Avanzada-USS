@@ -5,11 +5,8 @@
  */
 package Login;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
+
 
 /**
  *
@@ -58,5 +55,9 @@ public class Conexion {
             return null;
         }
         return resultado;
+    }
+    
+    public void closeConexion() throws SQLException{
+        conexion.close();
     }
 }
