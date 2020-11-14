@@ -21,10 +21,10 @@ public class Conexion {
     private Connection conexion;
 
     public Conexion obtener() {
-        String url = "jdbc:mysql://localhost:3306/db";
+        String url = "jdbc:mysql://ec2-54-175-145-253.compute-1.amazonaws.com:3306/db";
         //String url = "jdbc:oracle:thin:@40.117.103.135:1521:orcl";
         String user = "Rodrigo";
-        String password = "Maniac300chang";
+        String password = "SUi7oqH6tV";
         try {
             Class.forName("com.mysql.jdbc.Driver");
             setConexion(DriverManager.getConnection(url, user, password));
