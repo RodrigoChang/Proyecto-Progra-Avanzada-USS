@@ -25,12 +25,14 @@ public class Controlador implements ActionListener {
     frmLogin win_login;
     frmPrincipal win_principal;
     frmAltaUsuario win_alta_usuario;
+    String user_type;
     
     public Controlador(Login login, frmLogin win_login, frmPrincipal win_principal,frmAltaUsuario win_alta_usuario) {
         this.login = login;
         this.win_login = win_login;
         this.win_principal = win_principal;
         this.win_alta_usuario=win_alta_usuario;
+        user_type="";
         this.win_login.ingButton.addActionListener(this);
         this.win_login.salir_butt.addActionListener(this);
         this.win_principal.alta_alumno_menu.addActionListener(this);
