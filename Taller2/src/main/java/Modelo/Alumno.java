@@ -12,7 +12,8 @@ package Modelo;
 public class Alumno {
     private int id;
     private Nivel nivel;
-    private String login, contraseña, nombre, apellidos;
+    private String login, contraseña, nombre, apellidos,nivel_id;
+    private static Alumno instance;
 
     public Alumno(int id, Nivel nivel, String login, String contraseña, String nombre, String apellidos) {
         this.id = id;
@@ -23,12 +24,23 @@ public class Alumno {
         this.apellidos = apellidos;
     }
 
+    public Alumno() {
+    }
+
     public int getId() {
         return id;
     }
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getNivel_id() {
+        return nivel_id;
+    }
+
+    public void setNivel_id(String nivel_id) {
+        this.nivel_id = nivel_id;
     }
 
     public Nivel getNivel() {
@@ -71,5 +83,10 @@ public class Alumno {
         this.apellidos = apellidos;
     }
     
+    public static Alumno getInstance(){
+        if (instance == null)
+            instance = new Alumno();
+        return instance;
+    }
     
 }
