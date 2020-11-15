@@ -27,44 +27,24 @@
             </MenuItem>
           </SubComponents>
         </Menu>
-        <Menu class="javax.swing.JMenu" name="editMenu">
-          <Properties>
-            <Property name="mnemonic" type="int" value="101"/>
-            <Property name="text" type="java.lang.String" value="Alumnos"/>
-          </Properties>
-          <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="alta_alumno_menu">
-              <Properties>
-                <Property name="mnemonic" type="int" value="116"/>
-                <Property name="text" type="java.lang.String" value="Alta Alumno"/>
-              </Properties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-              </AuxValues>
-            </MenuItem>
-          </SubComponents>
-        </Menu>
-        <Menu class="javax.swing.JMenu" name="helpMenu">
-          <Properties>
-            <Property name="mnemonic" type="int" value="104"/>
-            <Property name="text" type="java.lang.String" value="Asignaturas"/>
-          </Properties>
-          <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="alta_asignatura_menu">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Alta Asignatura"/>
-              </Properties>
-            </MenuItem>
-          </SubComponents>
-        </Menu>
-        <Menu class="javax.swing.JMenu" name="jMenu1">
+        <Menu class="javax.swing.JMenu" name="Profesores">
           <Properties>
             <Property name="text" type="java.lang.String" value="Profesores"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem3">
+            <MenuItem class="javax.swing.JMenuItem" name="Listar_Profesores">
               <Properties>
-                <Property name="text" type="java.lang.String" value="jMenuItem3"/>
+                <Property name="text" type="java.lang.String" value="Listar Profesores"/>
+              </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="Poner_notas">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Poner Notas"/>
+              </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="Listar_Alumnos">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Listar Alumnos"/>
               </Properties>
             </MenuItem>
           </SubComponents>
@@ -99,12 +79,12 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="desktopPane" pref="710" max="32767" attributes="0"/>
+          <Component id="desktopPane" pref="1024" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="desktopPane" pref="426" max="32767" attributes="0"/>
+          <Component id="desktopPane" pref="577" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
