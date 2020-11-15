@@ -25,8 +25,9 @@ public class Programa {
         frmPrincipalProfesor ventana_principal_profesor = new frmPrincipalProfesor();
         frmBajaUsuario ventana_baja_usuario = new frmBajaUsuario();
         frmBajaAsignatura ventana_baja_asignatura = new frmBajaAsignatura();
+        frmAltaAsignatura ventana_alta_asignatura = new frmAltaAsignatura();
         
-        Controlador controlador = new Controlador(login,insert,delete,ventana_login,ventana_alta_usuario,ventana_principal_admin, ventana_principal_alumno,ventana_principal_profesor,ventana_baja_usuario,ventana_baja_asignatura);
+        Controlador controlador = new Controlador(login,insert,delete,ventana_login,ventana_alta_usuario,ventana_principal_admin, ventana_principal_alumno,ventana_principal_profesor,ventana_baja_usuario,ventana_baja_asignatura,ventana_alta_asignatura);
         controlador.Iniciar();
     }
 }

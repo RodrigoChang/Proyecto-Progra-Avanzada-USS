@@ -30,7 +30,7 @@ public class frmAltaAsignatura extends javax.swing.JFrame {
         user_type_group = new javax.swing.ButtonGroup();
         jLabel1 = new javax.swing.JLabel();
         nivel_id_text = new javax.swing.JTextField();
-        login_text = new javax.swing.JTextField();
+        profesor_id_text = new javax.swing.JTextField();
         nombre_text = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -50,9 +50,9 @@ public class frmAltaAsignatura extends javax.swing.JFrame {
             }
         });
 
-        login_text.addActionListener(new java.awt.event.ActionListener() {
+        profesor_id_text.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                login_textActionPerformed(evt);
+                profesor_id_textActionPerformed(evt);
             }
         });
 
@@ -77,7 +77,6 @@ public class frmAltaAsignatura extends javax.swing.JFrame {
                         .addGap(167, 167, 167)
                         .addComponent(mensaje, javax.swing.GroupLayout.DEFAULT_SIZE, 282, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(crear_butt)
                         .addGap(18, 18, 18)
                         .addComponent(cancelar_butt))
@@ -94,7 +93,7 @@ public class frmAltaAsignatura extends javax.swing.JFrame {
                             .addComponent(jLabel5))
                         .addGap(48, 48, 48)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(login_text)
+                            .addComponent(profesor_id_text)
                             .addComponent(nombre_text))))
                 .addContainerGap())
         );
@@ -109,7 +108,7 @@ public class frmAltaAsignatura extends javax.swing.JFrame {
                     .addComponent(jLabel2))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(login_text, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(profesor_id_text, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -130,9 +129,9 @@ public class frmAltaAsignatura extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_nivel_id_textActionPerformed
 
-    private void login_textActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_login_textActionPerformed
+    private void profesor_id_textActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_profesor_id_textActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_login_textActionPerformed
+    }//GEN-LAST:event_profesor_id_textActionPerformed
 
     /**
      * @param args the command line arguments
@@ -177,10 +176,10 @@ public class frmAltaAsignatura extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
-    public javax.swing.JTextField login_text;
     private javax.swing.JLabel mensaje;
     public javax.swing.JTextField nivel_id_text;
     public javax.swing.JTextField nombre_text;
+    public javax.swing.JTextField profesor_id_text;
     public javax.swing.ButtonGroup user_type_group;
     // End of variables declaration//GEN-END:variables
 }

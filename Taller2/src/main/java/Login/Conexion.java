@@ -53,7 +53,6 @@ public class Conexion {
             e.printStackTrace();
             return null;
         }
-    
         return resultado;
     }
     

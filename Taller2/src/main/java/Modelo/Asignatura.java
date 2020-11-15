@@ -34,6 +34,22 @@ public class Asignatura {
         this.id = id;
     }
 
+    public String getNivel_id() {
+        return nivel_id;
+    }
+
+    public void setNivel_id(String nivel_id) {
+        this.nivel_id = nivel_id;
+    }
+
+    public String getProfesor_id() {
+        return profesor_id;
+    }
+
+    public void setProfesor_id(String profesor_id) {
+        this.profesor_id = profesor_id;
+    }
+
     public Nivel getNivel() {
         return nivel;
     }

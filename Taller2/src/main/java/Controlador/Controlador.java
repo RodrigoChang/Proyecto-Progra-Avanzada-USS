@@ -9,6 +9,7 @@ import Login.Insert;
 import Login.Login;
 import Modelo.Administrador;
 import Modelo.Alumno;
+import Modelo.Asignatura;
 import Modelo.Profesor;
 import Modelo.Usuario;
 import Vistas.*;
@@ -17,16 +18,14 @@ import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javax.swing.JOptionPane;
-import javax.swing.event.ChangeEvent;
 
 /**
  *
  * @author Fabián
  */
-public class Controlador implements ActionListener, ChangeListener {
+public class Controlador implements ActionListener{
     Login login;
     Insert insert;
     Delete delete;
@@ -37,9 +36,10 @@ public class Controlador implements ActionListener, ChangeListener {
     frmPrincipalProfesor win_principal_profesor;
     frmBajaUsuario win_baja_usuario;
     frmBajaAsignatura win_baja_asignatura;
+    frmAltaAsignatura win_alta_asignatura;
     String user_type;
     
-    public Controlador(Login login,Insert insert,Delete delete, frmLogin win_login,frmAltaUsuario win_alta_usuario,frmPrincipalAdmin win_principal_admin,frmPrincipalAlumno win_principal_alumno,frmPrincipalProfesor win_principal_profesor,frmBajaUsuario win_baja_usuario,frmBajaAsignatura win_baja_asignatura) {
+    public Controlador(Login login,Insert insert,Delete delete, frmLogin win_login,frmAltaUsuario win_alta_usuario,frmPrincipalAdmin win_principal_admin,frmPrincipalAlumno win_principal_alumno,frmPrincipalProfesor win_principal_profesor,frmBajaUsuario win_baja_usuario,frmBajaAsignatura win_baja_asignatura,frmAltaAsignatura win_alta_asignatura) {
         this.login = login;
         this.insert = insert;
         this.delete=delete;
@@ -50,6 +50,7 @@ public class Controlador implements ActionListener, ChangeListener {
         this.win_principal_profesor = win_principal_profesor;
         this.win_baja_usuario=win_baja_usuario;
         this.win_baja_asignatura=win_baja_asignatura;
+        this.win_alta_asignatura=win_alta_asignatura;
         user_type="";
         this.win_alta_usuario.alumno_rButt.addActionListener(this);
         this.win_alta_usuario.profesor_rButt.addActionListener(this);
@@ -65,6 +66,8 @@ public class Controlador implements ActionListener, ChangeListener {
         this.win_baja_usuario.cancelar_butt.addActionListener(this);
         this.win_baja_asignatura.eliminar_butt.addActionListener(this);
         this.win_baja_asignatura.cancelar_butt.addActionListener(this);
+        this.win_alta_asignatura.crear_butt.addActionListener(this);
+        this.win_alta_asignatura.cancelar_butt.addActionListener(this);
     }
     
     public void Iniciar(){
@@ -307,14 +310,36 @@ public class Controlador implements ActionListener, ChangeListener {
                 Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-    }
-    
-    public void stateChanged(ChangeEvent ce){
+        if(e.getSource()==win_principal_admin.alta_asignatura_menu){
+            win_alta_asignatura.setLocationRelativeTo(null);
+            win_alta_asignatura.setVisible(true); 
+        }
+        if(e.getSource()==win_alta_asignatura.cancelar_butt){
+            win_alta_asignatura.setVisible(false);
+            win_alta_asignatura.nivel_id_text.setText("");
+             win_alta_asignatura.profesor_id_text.setText("");
+              win_alta_asignatura.nombre_text.setText("");
+        }
         
-    }
-
-    @Override
-    public void changed(ObservableValue ov, Object t, Object t1) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if(e.getSource()==win_alta_asignatura.crear_butt){
+            Asignatura asignatura = Asignatura.getInstance();
+            asignatura.setNivel_id(win_alta_asignatura.nivel_id_text.getText());
+            asignatura.setProfesor_id(win_alta_asignatura.profesor_id_text.getText());
+            asignatura.setNombre(win_alta_asignatura.nombre_text.getText());
+            boolean insertar = false;
+            try {
+                insertar = insert.insertarAsignatura(asignatura.getNivel_id(), asignatura.getProfesor_id(), asignatura.getNombre());
+                if(insertar==true){
+                    JOptionPane.showMessageDialog(null,"Asignatura creada con éxito","Insert exitoso",JOptionPane.QUESTION_MESSAGE);
+                }
+                else{
+                    JOptionPane.showMessageDialog(null,"No se pudo crear la asignatura","Insert fallido",JOptionPane.QUESTION_MESSAGE);
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }
 }
+
+
