@@ -1,4 +1,3 @@
-
 import Vistas.*;
 import Modelo.*;
 import Controlador.*;
@@ -19,7 +18,8 @@ public class Programa {
         Login login = new Login();
         frmLogin ventana_login = new frmLogin();
         frmPrincipal ventana_principal = new frmPrincipal();
-        Controlador controlador = new Controlador(login,ventana_login,ventana_principal);
+        frmAltaUsuario ventana_alta_usuario = new frmAltaUsuario();
+        Controlador controlador = new Controlador(login,ventana_login,ventana_principal,ventana_alta_usuario);
         
         controlador.Iniciar();
     }
