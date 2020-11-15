@@ -12,6 +12,8 @@ package Modelo;
 public class Profesor {
     int id;
     private String login, contraseña, nombre, apellidos, email,especialista;
+    private static Profesor instance;
+    
 
     public Profesor(int id, String login, String contraseña, String nombre, String apellidos, String email, String especialista) {
         this.id = id;
@@ -21,6 +23,9 @@ public class Profesor {
         this.apellidos = apellidos;
         this.email = email;
         this.especialista = especialista;
+    }
+
+    public Profesor() {
     }
 
     public int getId() {
@@ -79,4 +84,9 @@ public class Profesor {
         this.especialista = especialista;
     }
     
+    public static Profesor getInstance(){
+        if (instance == null)
+            instance = new Profesor();
+        return instance;
+    }
 }
