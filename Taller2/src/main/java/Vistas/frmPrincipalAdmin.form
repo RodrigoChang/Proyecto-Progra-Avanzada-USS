@@ -60,22 +60,22 @@
             <Property name="text" type="java.lang.String" value="Asignatura"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem4">
+            <MenuItem class="javax.swing.JMenuItem" name="alta_asignatura_menu">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Alta asignatura"/>
               </Properties>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem1">
+            <MenuItem class="javax.swing.JMenuItem" name="baja_asignatura_menu">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Baja asignatura"/>
               </Properties>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem5">
+            <MenuItem class="javax.swing.JMenuItem" name="mod_datos_asignatura_menu">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Modificar datos asignatura"/>
               </Properties>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem6">
+            <MenuItem class="javax.swing.JMenuItem" name="matricular_alumno_menu">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Matricular alumno"/>
               </Properties>

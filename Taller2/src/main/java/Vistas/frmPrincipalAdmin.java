@@ -38,10 +38,10 @@ public class frmPrincipalAdmin extends javax.swing.JFrame {
         baja_usuaio_menu = new javax.swing.JMenuItem();
         mod_datos_usuario = new javax.swing.JMenuItem();
         AsignaturaMenu = new javax.swing.JMenu();
-        jMenuItem4 = new javax.swing.JMenuItem();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem5 = new javax.swing.JMenuItem();
-        jMenuItem6 = new javax.swing.JMenuItem();
+        alta_asignatura_menu = new javax.swing.JMenuItem();
+        baja_asignatura_menu = new javax.swing.JMenuItem();
+        mod_datos_asignatura_menu = new javax.swing.JMenuItem();
+        matricular_alumno_menu = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setName("Software de Ventas"); // NOI18N
@@ -92,17 +92,17 @@ public class frmPrincipalAdmin extends javax.swing.JFrame {
         AsignaturaMenu.setMnemonic('h');
         AsignaturaMenu.setText("Asignatura");
 
-        jMenuItem4.setText("Alta asignatura");
-        AsignaturaMenu.add(jMenuItem4);
+        alta_asignatura_menu.setText("Alta asignatura");
+        AsignaturaMenu.add(alta_asignatura_menu);
 
-        jMenuItem1.setText("Baja asignatura");
-        AsignaturaMenu.add(jMenuItem1);
+        baja_asignatura_menu.setText("Baja asignatura");
+        AsignaturaMenu.add(baja_asignatura_menu);
 
-        jMenuItem5.setText("Modificar datos asignatura");
-        AsignaturaMenu.add(jMenuItem5);
+        mod_datos_asignatura_menu.setText("Modificar datos asignatura");
+        AsignaturaMenu.add(mod_datos_asignatura_menu);
 
-        jMenuItem6.setText("Matricular alumno");
-        AsignaturaMenu.add(jMenuItem6);
+        matricular_alumno_menu.setText("Matricular alumno");
+        AsignaturaMenu.add(matricular_alumno_menu);
 
         menuBar.add(AsignaturaMenu);
 
@@ -176,15 +176,15 @@ public class frmPrincipalAdmin extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu AsignaturaMenu;
+    private javax.swing.JMenuItem alta_asignatura_menu;
     public javax.swing.JMenuItem alta_usuario_menu;
+    private javax.swing.JMenuItem baja_asignatura_menu;
     private javax.swing.JMenuItem baja_usuaio_menu;
     private javax.swing.JDesktopPane desktopPane;
     private javax.swing.JMenuItem exitMenuItem;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JMenuItem jMenuItem6;
+    private javax.swing.JMenuItem matricular_alumno_menu;
     private javax.swing.JMenuBar menuBar;
+    private javax.swing.JMenuItem mod_datos_asignatura_menu;
     private javax.swing.JMenuItem mod_datos_usuario;
     private javax.swing.JMenu opcionesMenu;
     private javax.swing.JMenu usuarioMenu;
