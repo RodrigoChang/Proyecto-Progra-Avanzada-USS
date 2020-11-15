@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package Controlador;
+import Login.Delete;
 import Login.Insert;
 import Login.Login;
 import Modelo.Administrador;
@@ -28,29 +29,42 @@ import javax.swing.event.ChangeEvent;
 public class Controlador implements ActionListener, ChangeListener {
     Login login;
     Insert insert;
+    Delete delete;
     frmLogin win_login;
     frmPrincipalAdmin win_principal_admin;
     frmAltaUsuario win_alta_usuario;
     frmPrincipalAlumno win_principal_alumno;
     frmPrincipalProfesor win_principal_profesor;
+    frmBajaUsuario win_baja_usuario;
+    frmBajaAsignatura win_baja_asignatura;
     String user_type;
     
-    public Controlador(Login login,Insert insert, frmLogin win_login,frmAltaUsuario win_alta_usuario,frmPrincipalAdmin win_principal_admin,frmPrincipalAlumno win_principal_alumno,frmPrincipalProfesor win_principal_profesor) {
+    public Controlador(Login login,Insert insert,Delete delete, frmLogin win_login,frmAltaUsuario win_alta_usuario,frmPrincipalAdmin win_principal_admin,frmPrincipalAlumno win_principal_alumno,frmPrincipalProfesor win_principal_profesor,frmBajaUsuario win_baja_usuario,frmBajaAsignatura win_baja_asignatura) {
         this.login = login;
         this.insert = insert;
+        this.delete=delete;
         this.win_login = win_login;
         this.win_alta_usuario=win_alta_usuario;
         this.win_principal_admin = win_principal_admin;
         this.win_principal_alumno = win_principal_alumno;
         this.win_principal_profesor = win_principal_profesor;
+        this.win_baja_usuario=win_baja_usuario;
+        this.win_baja_asignatura=win_baja_asignatura;
         user_type="";
         this.win_alta_usuario.alumno_rButt.addActionListener(this);
         this.win_alta_usuario.profesor_rButt.addActionListener(this);
+        this.win_principal_admin.baja_asignatura_menu.addActionListener(this);
+        this.win_principal_admin.alta_asignatura_menu.addActionListener(this);
+        this.win_principal_admin.baja_usuaio_menu.addActionListener(this);
         this.win_principal_admin.alta_usuario_menu.addActionListener(this);
         this.win_alta_usuario.crear_butt.addActionListener(this);
         this.win_alta_usuario.cancelar_butt.addActionListener(this);
         this.win_login.ingButton.addActionListener(this);
         this.win_login.salir_butt.addActionListener(this);
+        this.win_baja_usuario.eliminar_butt.addActionListener(this);
+        this.win_baja_usuario.cancelar_butt.addActionListener(this);
+        this.win_baja_asignatura.eliminar_butt.addActionListener(this);
+        this.win_baja_asignatura.cancelar_butt.addActionListener(this);
     }
     
     public void Iniciar(){
@@ -59,6 +73,10 @@ public class Controlador implements ActionListener, ChangeListener {
     }
     @Override
     public void actionPerformed(ActionEvent e){
+        /*Eventos de LOGIN
+        #######################################################################################################################################################################################
+        */
+        
         if(e.getSource()== win_login.ingButton){
             String usuario = win_login.txtUsuario.getText();
             String password = win_login.txtPassword.getText();
@@ -115,6 +133,10 @@ public class Controlador implements ActionListener, ChangeListener {
         if(e.getSource()==win_login.salir_butt){
             System.exit(0);
         }
+        
+        /*Eventos de Admin - Usuarios
+        #######################################################################################################################################################################################
+        */
         if(e.getSource()==win_principal_admin.alta_usuario_menu){
             win_alta_usuario.setLocationRelativeTo(null);
             win_alta_usuario.setVisible(true);  
@@ -193,6 +215,97 @@ public class Controlador implements ActionListener, ChangeListener {
             win_alta_usuario.email_text.setText("");
             win_alta_usuario.especialista_text.setText("");
             win_alta_usuario.setVisible(false);
+        }
+        
+        if(e.getSource()==win_principal_admin.baja_usuaio_menu){
+            win_baja_usuario.setLocationRelativeTo(null);
+            win_baja_usuario.setVisible(true);  
+        }
+        
+        if(e.getSource()==win_baja_usuario.eliminar_butt){
+            if(win_baja_usuario.admin_rButt.isSelected()){
+                String Id = win_baja_usuario.id_usuario_text.getText();
+                boolean eliminar = false;
+                try {
+                    eliminar = delete.deleteAdmin(Id);
+                    if(eliminar==true){
+                        JOptionPane.showMessageDialog(null,"Administrador eliminado con éxito","Insert exitoso",JOptionPane.QUESTION_MESSAGE);
+                    }
+                    else{
+                        JOptionPane.showMessageDialog(null,"No se pudo eliminar al administrador","Insert fallido",JOptionPane.QUESTION_MESSAGE);
+                    }
+                } catch (SQLException ex) {
+                    Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+        if(e.getSource()==win_baja_usuario.eliminar_butt){
+            if(win_baja_usuario.alumno_rButt.isSelected()){
+                String Id = win_baja_usuario.id_usuario_text.getText();
+                boolean eliminar = false;
+                try {
+                    eliminar = delete.deleteAlumno(Id);
+                    if(eliminar==true){
+                        JOptionPane.showMessageDialog(null,"Alumno eliminado con éxito","Insert exitoso",JOptionPane.QUESTION_MESSAGE);
+                    }
+                    else{
+                        JOptionPane.showMessageDialog(null,"No se pudo eliminar al Alumno","Insert fallido",JOptionPane.QUESTION_MESSAGE);
+                    }
+                } catch (SQLException ex) {
+                    Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+        if(e.getSource()==win_baja_usuario.eliminar_butt){
+            if(win_baja_usuario.profesor_rButt.isSelected()){
+                String Id = win_baja_usuario.id_usuario_text.getText();
+                boolean eliminar = false;
+                try {
+                    eliminar = delete.deleteProfesor(Id);
+                    if(eliminar==true){
+                        JOptionPane.showMessageDialog(null,"Profesor eliminado con éxito","Insert exitoso",JOptionPane.QUESTION_MESSAGE);
+                    }
+                    else{
+                        JOptionPane.showMessageDialog(null,"No se pudo eliminar al Profesor","Insert fallido",JOptionPane.QUESTION_MESSAGE);
+                    }
+                } catch (SQLException ex) {
+                    Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+        if(e.getSource()==win_baja_usuario.cancelar_butt){
+            win_baja_usuario.id_usuario_text.setText("");
+            win_baja_usuario.setVisible(false);
+        }
+        
+        /*Eventos de Admin - Asignaturas
+        #######################################################################################################################################################################################
+        */
+        
+        if(e.getSource()==win_principal_admin.baja_asignatura_menu){
+            win_baja_asignatura.setLocationRelativeTo(null);
+            win_baja_asignatura.setVisible(true);  
+        }
+        
+        if(e.getSource()==win_baja_asignatura.cancelar_butt){
+            win_baja_asignatura.id_text.setText("");
+            win_baja_asignatura.setVisible(false);
+        }
+        
+        if(e.getSource()==win_baja_asignatura.eliminar_butt){
+            String Id = win_baja_asignatura.id_text.getText();
+            boolean eliminar = false;
+            try {
+                eliminar = delete.deleteAsignatura(Id);
+                if(eliminar==true){
+                    JOptionPane.showMessageDialog(null,"Asignatura eliminada con éxito","Insert exitoso",JOptionPane.QUESTION_MESSAGE);
+                }
+                else{
+                    JOptionPane.showMessageDialog(null,"No se pudo eliminar la asignatura","Insert fallido",JOptionPane.QUESTION_MESSAGE);
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }
     
