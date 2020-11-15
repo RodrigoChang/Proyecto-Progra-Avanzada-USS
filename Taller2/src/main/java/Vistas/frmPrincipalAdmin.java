@@ -175,19 +175,19 @@ public class frmPrincipalAdmin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu AsignaturaMenu;
-    private javax.swing.JMenuItem alta_asignatura_menu;
+    public javax.swing.JMenu AsignaturaMenu;
+    public javax.swing.JMenuItem alta_asignatura_menu;
     public javax.swing.JMenuItem alta_usuario_menu;
-    private javax.swing.JMenuItem baja_asignatura_menu;
-    private javax.swing.JMenuItem baja_usuaio_menu;
+    public javax.swing.JMenuItem baja_asignatura_menu;
+    public javax.swing.JMenuItem baja_usuaio_menu;
     private javax.swing.JDesktopPane desktopPane;
     private javax.swing.JMenuItem exitMenuItem;
-    private javax.swing.JMenuItem matricular_alumno_menu;
+    public javax.swing.JMenuItem matricular_alumno_menu;
     private javax.swing.JMenuBar menuBar;
-    private javax.swing.JMenuItem mod_datos_asignatura_menu;
-    private javax.swing.JMenuItem mod_datos_usuario;
+    public javax.swing.JMenuItem mod_datos_asignatura_menu;
+    public javax.swing.JMenuItem mod_datos_usuario;
     private javax.swing.JMenu opcionesMenu;
-    private javax.swing.JMenu usuarioMenu;
+    public javax.swing.JMenu usuarioMenu;
     // End of variables declaration//GEN-END:variables
 
 }

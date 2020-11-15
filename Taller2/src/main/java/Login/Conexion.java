@@ -66,6 +66,15 @@ public class Conexion {
         }
     }
     
+    public void eliminar(String sql){
+        try {
+            Statement sentencia = getConexion().createStatement();
+            sentencia.executeUpdate(sql);
+        }   catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    
     public void closeConexion() throws SQLException{
         conexion.close();
     }

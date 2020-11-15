@@ -10,23 +10,27 @@ package Modelo;
  * @author Fabián
  */
 public class Asignatura {
-    int id;
+    String id,nivel_id,profesor_id;
     Nivel nivel;
     Profesor profesor;
     String nombre;
+    private static Asignatura instance;
 
-    public Asignatura(int id, Nivel nivel, Profesor profesor, String nombre) {
+    public Asignatura(String id, Nivel nivel, Profesor profesor, String nombre) {
         this.id = id;
         this.nivel = nivel;
         this.profesor = profesor;
         this.nombre = nombre;
     }
 
-    public int getId() {
+    public Asignatura() {
+    }
+
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -52,6 +56,12 @@ public class Asignatura {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+    
+    public static Asignatura getInstance(){
+        if (instance == null)
+            instance = new Asignatura();
+        return instance;
     }
     
     

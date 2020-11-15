@@ -33,5 +33,11 @@ public class Insert {
         return true;
     }
     
+    public boolean insertarAsignatura(String nivel_id, String profesor_id , String nombre){
+        Conexion conexion = new Conexion().obtener();
+        conexion.insertar("INSERT INTO db.asignatura (nivel_id,profesor_id,nombre) VALUES ('"+nivel_id+"','"+profesor_id+"','"+nombre+"')");
+        return true;
+    }
+    
 }
   
