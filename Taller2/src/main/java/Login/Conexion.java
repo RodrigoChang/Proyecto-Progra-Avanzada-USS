@@ -53,7 +53,17 @@ public class Conexion {
             e.printStackTrace();
             return null;
         }
+    
         return resultado;
+    }
+    
+    public void insertar(String sql) {
+        try {
+            Statement sentencia = getConexion().createStatement();
+            sentencia.executeUpdate(sql);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
     
     public void closeConexion() throws SQLException{

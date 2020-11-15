@@ -16,10 +16,14 @@ import Login.*;
 public class Programa {
     public static void main(String[] args){
         Login login = new Login();
+        Insert insert = new Insert();
         frmLogin ventana_login = new frmLogin();
-        frmPrincipal ventana_principal = new frmPrincipal();
         frmAltaUsuario ventana_alta_usuario = new frmAltaUsuario();
-        Controlador controlador = new Controlador(login,ventana_login,ventana_principal,ventana_alta_usuario);
+        frmPrincipalAdmin ventana_principal_admin = new frmPrincipalAdmin();
+        frmPrincipalAlumno ventana_principal_alumno = new frmPrincipalAlumno();
+        frmPrincipalProfesor ventana_principal_profesor = new frmPrincipalProfesor();
+        
+        Controlador controlador = new Controlador(login,insert,ventana_login,ventana_alta_usuario,ventana_principal_admin, ventana_principal_alumno,ventana_principal_profesor);
         
         controlador.Iniciar();
     }
