@@ -33,12 +33,10 @@ public class frmPrincipalProfesor extends javax.swing.JFrame {
         menuBar = new javax.swing.JMenuBar();
         fileMenu = new javax.swing.JMenu();
         exitMenuItem = new javax.swing.JMenuItem();
-        editMenu = new javax.swing.JMenu();
-        alta_alumno_menu = new javax.swing.JMenuItem();
-        helpMenu = new javax.swing.JMenu();
-        alta_asignatura_menu = new javax.swing.JMenuItem();
-        jMenu1 = new javax.swing.JMenu();
-        jMenuItem3 = new javax.swing.JMenuItem();
+        Profesores = new javax.swing.JMenu();
+        Listar_Profesores = new javax.swing.JMenuItem();
+        Poner_notas = new javax.swing.JMenuItem();
+        Listar_Alumnos = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setName("Software de Ventas"); // NOI18N
@@ -71,29 +69,18 @@ public class frmPrincipalProfesor extends javax.swing.JFrame {
 
         menuBar.add(fileMenu);
 
-        editMenu.setMnemonic('e');
-        editMenu.setText("Alumnos");
+        Profesores.setText("Profesores");
 
-        alta_alumno_menu.setMnemonic('t');
-        alta_alumno_menu.setText("Alta Alumno");
-        editMenu.add(alta_alumno_menu);
+        Listar_Profesores.setText("Listar Profesores");
+        Profesores.add(Listar_Profesores);
 
-        menuBar.add(editMenu);
+        Poner_notas.setText("Poner Notas");
+        Profesores.add(Poner_notas);
 
-        helpMenu.setMnemonic('h');
-        helpMenu.setText("Asignaturas");
+        Listar_Alumnos.setText("Listar Alumnos");
+        Profesores.add(Listar_Alumnos);
 
-        alta_asignatura_menu.setText("Alta Asignatura");
-        helpMenu.add(alta_asignatura_menu);
-
-        menuBar.add(helpMenu);
-
-        jMenu1.setText("Profesores");
-
-        jMenuItem3.setText("jMenuItem3");
-        jMenu1.add(jMenuItem3);
-
-        menuBar.add(jMenu1);
+        menuBar.add(Profesores);
 
         setJMenuBar(menuBar);
 
@@ -164,15 +151,13 @@ public class frmPrincipalProfesor extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JMenuItem alta_alumno_menu;
-    private javax.swing.JMenuItem alta_asignatura_menu;
+    private javax.swing.JMenuItem Listar_Alumnos;
+    private javax.swing.JMenuItem Listar_Profesores;
+    private javax.swing.JMenuItem Poner_notas;
+    private javax.swing.JMenu Profesores;
     private javax.swing.JDesktopPane desktopPane;
-    private javax.swing.JMenu editMenu;
     private javax.swing.JMenuItem exitMenuItem;
     private javax.swing.JMenu fileMenu;
-    private javax.swing.JMenu helpMenu;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuBar menuBar;
     // End of variables declaration//GEN-END:variables
 
