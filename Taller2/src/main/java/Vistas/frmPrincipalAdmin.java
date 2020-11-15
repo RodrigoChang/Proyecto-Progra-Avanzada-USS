@@ -11,12 +11,12 @@ import Modelo.Usuario;
  *
  * @author Fernando
  */
-public class frmPrincipal extends javax.swing.JFrame {
+public class frmPrincipalAdmin extends javax.swing.JFrame {
 
     /**
      * Creates new form frmPrincipal
      */
-    public frmPrincipal() {
+    public frmPrincipalAdmin() {
         initComponents();
     }
 
@@ -31,16 +31,17 @@ public class frmPrincipal extends javax.swing.JFrame {
 
         desktopPane = new javax.swing.JDesktopPane();
         menuBar = new javax.swing.JMenuBar();
-        fileMenu = new javax.swing.JMenu();
-        MenuItemCategoria = new javax.swing.JMenuItem();
+        opcionesMenu = new javax.swing.JMenu();
         exitMenuItem = new javax.swing.JMenuItem();
-        editMenu = new javax.swing.JMenu();
-        alta_alumno_menu = new javax.swing.JMenuItem();
-        copyMenuItem = new javax.swing.JMenuItem();
-        helpMenu = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenu1 = new javax.swing.JMenu();
-        jMenuItem3 = new javax.swing.JMenuItem();
+        usuarioMenu = new javax.swing.JMenu();
+        alta_usuario_menu = new javax.swing.JMenuItem();
+        baja_usuaio_menu = new javax.swing.JMenuItem();
+        mod_datos_usuario = new javax.swing.JMenuItem();
+        AsignaturaMenu = new javax.swing.JMenu();
+        alta_asignatura_menu = new javax.swing.JMenuItem();
+        baja_asignatura_menu = new javax.swing.JMenuItem();
+        mod_datos_asignatura_menu = new javax.swing.JMenuItem();
+        matricular_alumno_menu = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setName("Software de Ventas"); // NOI18N
@@ -54,22 +55,8 @@ public class frmPrincipal extends javax.swing.JFrame {
 
         menuBar.setForeground(new java.awt.Color(0, 123, 247));
 
-        fileMenu.setMnemonic('f');
-        fileMenu.setText("Inventario");
-
-        MenuItemCategoria.setMnemonic('o');
-        MenuItemCategoria.setText("Categorías");
-        MenuItemCategoria.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                MenuItemCategoriaMouseClicked(evt);
-            }
-        });
-        MenuItemCategoria.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MenuItemCategoriaActionPerformed(evt);
-            }
-        });
-        fileMenu.add(MenuItemCategoria);
+        opcionesMenu.setMnemonic('f');
+        opcionesMenu.setText("Opciones");
 
         exitMenuItem.setMnemonic('x');
         exitMenuItem.setText("Exit");
@@ -83,37 +70,41 @@ public class frmPrincipal extends javax.swing.JFrame {
                 exitMenuItemActionPerformed(evt);
             }
         });
-        fileMenu.add(exitMenuItem);
+        opcionesMenu.add(exitMenuItem);
 
-        menuBar.add(fileMenu);
+        menuBar.add(opcionesMenu);
 
-        editMenu.setMnemonic('e');
-        editMenu.setText("Alumnos");
+        usuarioMenu.setMnemonic('e');
+        usuarioMenu.setText("Usuario");
 
-        alta_alumno_menu.setMnemonic('t');
-        alta_alumno_menu.setText("Alta Alumno");
-        editMenu.add(alta_alumno_menu);
+        alta_usuario_menu.setMnemonic('t');
+        alta_usuario_menu.setText("Alta Usuario");
+        usuarioMenu.add(alta_usuario_menu);
 
-        copyMenuItem.setMnemonic('y');
-        copyMenuItem.setText("Buscar Cliente");
-        editMenu.add(copyMenuItem);
+        baja_usuaio_menu.setText("Baja Usuario");
+        usuarioMenu.add(baja_usuaio_menu);
 
-        menuBar.add(editMenu);
+        mod_datos_usuario.setText("Modificar Datos Usuario");
+        usuarioMenu.add(mod_datos_usuario);
 
-        helpMenu.setMnemonic('h');
-        helpMenu.setText("Asignaturas");
+        menuBar.add(usuarioMenu);
 
-        jMenuItem1.setText("Perfil de Usuario");
-        helpMenu.add(jMenuItem1);
+        AsignaturaMenu.setMnemonic('h');
+        AsignaturaMenu.setText("Asignatura");
 
-        menuBar.add(helpMenu);
+        alta_asignatura_menu.setText("Alta asignatura");
+        AsignaturaMenu.add(alta_asignatura_menu);
 
-        jMenu1.setText("Profesores");
+        baja_asignatura_menu.setText("Baja asignatura");
+        AsignaturaMenu.add(baja_asignatura_menu);
 
-        jMenuItem3.setText("jMenuItem3");
-        jMenu1.add(jMenuItem3);
+        mod_datos_asignatura_menu.setText("Modificar datos asignatura");
+        AsignaturaMenu.add(mod_datos_asignatura_menu);
 
-        menuBar.add(jMenu1);
+        matricular_alumno_menu.setText("Matricular alumno");
+        AsignaturaMenu.add(matricular_alumno_menu);
+
+        menuBar.add(AsignaturaMenu);
 
         setJMenuBar(menuBar);
 
@@ -143,17 +134,6 @@ public class frmPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:        
     }//GEN-LAST:event_formWindowOpened
 
-    private void MenuItemCategoriaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MenuItemCategoriaMouseClicked
-           // TODO add your handling code here:
-
-    }//GEN-LAST:event_MenuItemCategoriaMouseClicked
-
-    private void MenuItemCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuItemCategoriaActionPerformed
-        // TODO add your handling code here:
-         System.out.print("Abriendo formulario");
-         new frmCategorias().setVisible(true);
-    }//GEN-LAST:event_MenuItemCategoriaActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -171,14 +151,15 @@ public class frmPrincipal extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(frmPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmPrincipalAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(frmPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmPrincipalAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(frmPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmPrincipalAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(frmPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmPrincipalAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
                 
@@ -186,7 +167,7 @@ public class frmPrincipal extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
 
-                new frmPrincipal().setVisible(true);
+                new frmPrincipalAdmin().setVisible(true);
                 
                 
             }
@@ -194,18 +175,19 @@ public class frmPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenuItem MenuItemCategoria;
-    public javax.swing.JMenuItem alta_alumno_menu;
-    private javax.swing.JMenuItem copyMenuItem;
+    private javax.swing.JMenu AsignaturaMenu;
+    private javax.swing.JMenuItem alta_asignatura_menu;
+    public javax.swing.JMenuItem alta_usuario_menu;
+    private javax.swing.JMenuItem baja_asignatura_menu;
+    private javax.swing.JMenuItem baja_usuaio_menu;
     private javax.swing.JDesktopPane desktopPane;
-    private javax.swing.JMenu editMenu;
     private javax.swing.JMenuItem exitMenuItem;
-    private javax.swing.JMenu fileMenu;
-    private javax.swing.JMenu helpMenu;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem matricular_alumno_menu;
     private javax.swing.JMenuBar menuBar;
+    private javax.swing.JMenuItem mod_datos_asignatura_menu;
+    private javax.swing.JMenuItem mod_datos_usuario;
+    private javax.swing.JMenu opcionesMenu;
+    private javax.swing.JMenu usuarioMenu;
     // End of variables declaration//GEN-END:variables
 
 }
