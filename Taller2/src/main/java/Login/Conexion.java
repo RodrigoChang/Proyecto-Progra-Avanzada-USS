@@ -40,7 +40,7 @@ public class Conexion {
         return conexion;
     }
 
-    public void setConexion(Connection conexion) {
+    public void setConexion(Connection conexion){
         this.conexion = conexion;
     }
 
@@ -53,7 +53,6 @@ public class Conexion {
             e.printStackTrace();
             return null;
         }
-    
         return resultado;
     }
     
@@ -62,6 +61,15 @@ public class Conexion {
             Statement sentencia = getConexion().createStatement();
             sentencia.executeUpdate(sql);
         } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public void eliminar(String sql){
+        try {
+            Statement sentencia = getConexion().createStatement();
+            sentencia.executeUpdate(sql);
+        }   catch (SQLException e) {
             e.printStackTrace();
         }
     }
