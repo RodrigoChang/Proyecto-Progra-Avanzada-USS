@@ -10,12 +10,12 @@ package Modelo;
  * @author Fabián
  */
 public class Profesor {
-    int id;
+    String id;
     private String login, contraseña, nombre, apellidos, email,especialista;
     private static Profesor instance;
     
 
-    public Profesor(int id, String login, String contraseña, String nombre, String apellidos, String email, String especialista) {
+    public Profesor(String id, String login, String contraseña, String nombre, String apellidos, String email, String especialista) {
         this.id = id;
         this.login = login;
         this.contraseña = contraseña;
@@ -28,11 +28,11 @@ public class Profesor {
     public Profesor() {
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 

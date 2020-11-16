@@ -53,7 +53,7 @@
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
               </AuxValues>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="mod_datos_usuario">
+            <MenuItem class="javax.swing.JMenuItem" name="mod_datos_usuario_menu">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Modificar Datos Usuario"/>
               </Properties>
