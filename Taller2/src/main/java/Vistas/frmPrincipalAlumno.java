@@ -164,9 +164,9 @@ public class frmPrincipalAlumno extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu Alumnos;
-    private javax.swing.JMenuItem Listar_Profesores;
+    public javax.swing.JMenuItem Listar_Profesores;
     public javax.swing.JMenuItem Listar_alumnos_de_clase;
-    private javax.swing.JMenuItem consultar_Notas;
+    public javax.swing.JMenuItem consultar_Notas;
     private javax.swing.JDesktopPane desktopPane;
     private javax.swing.JMenuItem exitMenuItem;
     private javax.swing.JMenu fileMenu;
