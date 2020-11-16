@@ -23,6 +23,7 @@ public class Login {
               usuarioactual.setLogin(resultado.getString("login"));
               usuarioactual.setClave(resultado.getString("clave"));
               usuarioactual.setEmail(resultado.getString("email"));
+              conexion.closeConexion();
               return true;
             }
         } catch (SQLException e){
@@ -44,6 +45,7 @@ public class Login {
               usuarioactual.setContraseña(resultado.getString("clave"));
               usuarioactual.setNombre(resultado.getString("nombre"));
               usuarioactual.setApellidos(resultado.getString("apellidos"));
+              conexion.closeConexion();
               return true;
             }
         } catch (SQLException e){
@@ -67,6 +69,7 @@ public class Login {
               usuarioactual.setApellidos(resultado.getString("apellidos"));
               usuarioactual.setEmail(resultado.getString("email"));
               usuarioactual.setEspecialista(resultado.getString("especialista"));
+              conexion.closeConexion();
               return true;
             }
         } catch (SQLException e){

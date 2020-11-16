@@ -32,15 +32,11 @@ public class frmPrincipalAlumno extends javax.swing.JFrame {
         desktopPane = new javax.swing.JDesktopPane();
         menuBar = new javax.swing.JMenuBar();
         fileMenu = new javax.swing.JMenu();
-        MenuItemCategoria = new javax.swing.JMenuItem();
         exitMenuItem = new javax.swing.JMenuItem();
-        editMenu = new javax.swing.JMenu();
-        alta_alumno_menu = new javax.swing.JMenuItem();
-        copyMenuItem = new javax.swing.JMenuItem();
-        helpMenu = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenu1 = new javax.swing.JMenu();
-        jMenuItem3 = new javax.swing.JMenuItem();
+        Alumnos = new javax.swing.JMenu();
+        Listar_alumnos_de_clase = new javax.swing.JMenuItem();
+        Listar_Profesores = new javax.swing.JMenuItem();
+        consultar_Notas = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setName("Software de Ventas"); // NOI18N
@@ -55,21 +51,7 @@ public class frmPrincipalAlumno extends javax.swing.JFrame {
         menuBar.setForeground(new java.awt.Color(0, 123, 247));
 
         fileMenu.setMnemonic('f');
-        fileMenu.setText("Inventario");
-
-        MenuItemCategoria.setMnemonic('o');
-        MenuItemCategoria.setText("Categorías");
-        MenuItemCategoria.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                MenuItemCategoriaMouseClicked(evt);
-            }
-        });
-        MenuItemCategoria.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MenuItemCategoriaActionPerformed(evt);
-            }
-        });
-        fileMenu.add(MenuItemCategoria);
+        fileMenu.setText("Opciones");
 
         exitMenuItem.setMnemonic('x');
         exitMenuItem.setText("Exit");
@@ -87,33 +69,26 @@ public class frmPrincipalAlumno extends javax.swing.JFrame {
 
         menuBar.add(fileMenu);
 
-        editMenu.setMnemonic('e');
-        editMenu.setText("Alumnos");
+        Alumnos.setMnemonic('e');
+        Alumnos.setText("Alumnos");
 
-        alta_alumno_menu.setMnemonic('t');
-        alta_alumno_menu.setText("Alta Alumno");
-        editMenu.add(alta_alumno_menu);
+        Listar_alumnos_de_clase.setMnemonic('t');
+        Listar_alumnos_de_clase.setText("Listar alumnos de clase");
+        Alumnos.add(Listar_alumnos_de_clase);
 
-        copyMenuItem.setMnemonic('y');
-        copyMenuItem.setText("Buscar Cliente");
-        editMenu.add(copyMenuItem);
+        Listar_Profesores.setMnemonic('y');
+        Listar_Profesores.setText("Listar Profesores");
+        Listar_Profesores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Listar_ProfesoresActionPerformed(evt);
+            }
+        });
+        Alumnos.add(Listar_Profesores);
 
-        menuBar.add(editMenu);
+        consultar_Notas.setText("Consultar notas");
+        Alumnos.add(consultar_Notas);
 
-        helpMenu.setMnemonic('h');
-        helpMenu.setText("Asignaturas");
-
-        jMenuItem1.setText("Perfil de Usuario");
-        helpMenu.add(jMenuItem1);
-
-        menuBar.add(helpMenu);
-
-        jMenu1.setText("Profesores");
-
-        jMenuItem3.setText("jMenuItem3");
-        jMenu1.add(jMenuItem3);
-
-        menuBar.add(jMenu1);
+        menuBar.add(Alumnos);
 
         setJMenuBar(menuBar);
 
@@ -121,11 +96,11 @@ public class frmPrincipalAlumno extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 710, Short.MAX_VALUE)
+            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1024, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 426, Short.MAX_VALUE)
+            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 577, Short.MAX_VALUE)
         );
 
         pack();
@@ -143,16 +118,9 @@ public class frmPrincipalAlumno extends javax.swing.JFrame {
         // TODO add your handling code here:        
     }//GEN-LAST:event_formWindowOpened
 
-    private void MenuItemCategoriaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MenuItemCategoriaMouseClicked
-           // TODO add your handling code here:
-
-    }//GEN-LAST:event_MenuItemCategoriaMouseClicked
-
-    private void MenuItemCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuItemCategoriaActionPerformed
+    private void Listar_ProfesoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Listar_ProfesoresActionPerformed
         // TODO add your handling code here:
-         System.out.print("Abriendo formulario");
-         new frmCategorias().setVisible(true);
-    }//GEN-LAST:event_MenuItemCategoriaActionPerformed
+    }//GEN-LAST:event_Listar_ProfesoresActionPerformed
 
     /**
      * @param args the command line arguments
@@ -195,17 +163,13 @@ public class frmPrincipalAlumno extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenuItem MenuItemCategoria;
-    public javax.swing.JMenuItem alta_alumno_menu;
-    private javax.swing.JMenuItem copyMenuItem;
+    private javax.swing.JMenu Alumnos;
+    private javax.swing.JMenuItem Listar_Profesores;
+    public javax.swing.JMenuItem Listar_alumnos_de_clase;
+    private javax.swing.JMenuItem consultar_Notas;
     private javax.swing.JDesktopPane desktopPane;
-    private javax.swing.JMenu editMenu;
     private javax.swing.JMenuItem exitMenuItem;
     private javax.swing.JMenu fileMenu;
-    private javax.swing.JMenu helpMenu;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuBar menuBar;
     // End of variables declaration//GEN-END:variables
 
