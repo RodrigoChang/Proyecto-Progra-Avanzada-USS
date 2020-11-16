@@ -5,24 +5,71 @@
  */
 package Login;
 import java.sql.*;
-import Modelo.Usuario;
+import Modelo.*;
 /**
  *
  * @author rodrigo
  */
 public class Login {
-    public boolean login(String usuario, String password)throws SQLException{
+    public boolean loginAdmin(String usuario, String password)throws SQLException{
         try{
             Conexion conexion = new Conexion().obtener();
             
-            ResultSet resultado = conexion.consultar("SELECT idusuario, titular, identificacion, tipo_usuario FROM usuarios WHERE usuario = '" + usuario + "' and password = '" + password + "'" );
+            ResultSet resultado = conexion.consultar("SELECT id, login, clave, email FROM administrador WHERE login = '" + usuario + "' and clave = '" + password + "'" );
             resultado.next();
             if (resultado.getRow() >0){
-                Usuario usuarioactual = Usuario.getInstance();
-              usuarioactual.setIDUsuario(resultado.getInt("idusuario"));
-              usuarioactual.setIdTipoUsuario(resultado.getString("tipo_usuario"));
-              usuarioactual.setIdentificacion(resultado.getString("identificacion"));
-              usuarioactual.setNombreApellidos(resultado.getString("titular"));
+                Administrador usuarioactual = Administrador.getInstance();
+              usuarioactual.setId(resultado.getInt("id"));
+              usuarioactual.setLogin(resultado.getString("login"));
+              usuarioactual.setClave(resultado.getString("clave"));
+              usuarioactual.setEmail(resultado.getString("email"));
+              conexion.closeConexion();
+              return true;
+            }
+        } catch (SQLException e){
+            e.printStackTrace();
+            return false;
+        }
+        return false;
+    }
+    public boolean loginAlumno(String usuario, String password)throws SQLException{
+        try{
+            Conexion conexion = new Conexion().obtener();
+            ResultSet resultado = conexion.consultar("SELECT id, nivel_id, login, clave, nombre, apellidos FROM alumno WHERE login = '" + usuario + "' and clave = '" + password + "'" );
+            resultado.next();
+            if (resultado.getRow() >0){
+                Alumno usuarioactual = Alumno.getInstance();
+              usuarioactual.setId(resultado.getInt("id"));
+              usuarioactual.setNivel_id(resultado.getString("nivel_id"));
+              usuarioactual.setLogin(resultado.getString("login"));
+              usuarioactual.setContraseña(resultado.getString("clave"));
+              usuarioactual.setNombre(resultado.getString("nombre"));
+              usuarioactual.setApellidos(resultado.getString("apellidos"));
+              conexion.closeConexion();
+              return true;
+            }
+        } catch (SQLException e){
+            e.printStackTrace();
+            return false;
+        }
+        return false;
+    }
+    public boolean loginProfesor(String usuario, String password)throws SQLException{
+        try{
+            Conexion conexion = new Conexion().obtener();
+            
+            ResultSet resultado = conexion.consultar("SELECT id, login, clave, nombre, apellidos, email, especialista FROM profesor WHERE login = '" + usuario + "' and clave = '" + password + "'" );
+            resultado.next();
+            if (resultado.getRow() >0){
+                Profesor usuarioactual = Profesor.getInstance();
+              usuarioactual.setId(resultado.getInt("id"));
+              usuarioactual.setLogin(resultado.getString("login"));
+              usuarioactual.setContraseña(resultado.getString("clave"));
+              usuarioactual.setNombre(resultado.getString("nombre"));
+              usuarioactual.setApellidos(resultado.getString("apellidos"));
+              usuarioactual.setEmail(resultado.getString("email"));
+              usuarioactual.setEspecialista(resultado.getString("especialista"));
+              conexion.closeConexion();
               return true;
             }
         } catch (SQLException e){
