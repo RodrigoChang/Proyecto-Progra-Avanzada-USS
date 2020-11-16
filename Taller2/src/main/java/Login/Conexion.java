@@ -40,7 +40,7 @@ public class Conexion {
         return conexion;
     }
 
-    public void setConexion(Connection conexion) {
+    public void setConexion(Connection conexion){
         this.conexion = conexion;
     }
 
@@ -53,7 +53,6 @@ public class Conexion {
             e.printStackTrace();
             return null;
         }
-    
         return resultado;
     }
     
