@@ -33,6 +33,7 @@ public class Controlador implements ActionListener {
     frmPrincipalAlumno win_principal_alumno;
     frmPrincipalProfesor win_principal_profesor;
     frmBajaUsuario win_baja_usuario;
+    frmModUsuario win_mod_usuario;
     frmBajaAsignatura win_baja_asignatura;
     frmAltaAsignatura win_alta_asignatura;
     frmModAsignatura win_mod_asignatura;
@@ -41,7 +42,7 @@ public class Controlador implements ActionListener {
     public Controlador(Login login, Insert insert, Delete delete, Consulta consulta, Update update,
             frmLogin win_login, frmAltaUsuario win_alta_usuario, frmPrincipalAdmin win_principal_admin,
             frmPrincipalAlumno win_principal_alumno, frmPrincipalProfesor win_principal_profesor, frmBajaUsuario win_baja_usuario,
-            frmBajaAsignatura win_baja_asignatura, frmAltaAsignatura win_alta_asignatura, frmModAsignatura win_mod_asignatura) {
+            frmBajaAsignatura win_baja_asignatura, frmAltaAsignatura win_alta_asignatura, frmModAsignatura win_mod_asignatura,frmModUsuario win_mod_usuario) {
         
         this.login = login;
         this.insert = insert;
@@ -57,6 +58,7 @@ public class Controlador implements ActionListener {
         this.win_baja_asignatura = win_baja_asignatura;
         this.win_alta_asignatura = win_alta_asignatura;
         this.win_mod_asignatura = win_mod_asignatura;
+        this.win_mod_usuario = win_mod_usuario;
         user_type = "";
         this.win_alta_usuario.alumno_rButt.addActionListener(this);
         this.win_alta_usuario.profesor_rButt.addActionListener(this);
@@ -64,6 +66,7 @@ public class Controlador implements ActionListener {
         this.win_principal_admin.alta_asignatura_menu.addActionListener(this);
         this.win_principal_admin.baja_usuaio_menu.addActionListener(this);
         this.win_principal_admin.alta_usuario_menu.addActionListener(this);
+        this.win_principal_admin.mod_datos_usuario_menu.addActionListener(this);
         this.win_principal_admin.mod_datos_asignatura_menu.addActionListener(this);
         this.win_alta_usuario.crear_butt.addActionListener(this);
         this.win_alta_usuario.cancelar_butt.addActionListener(this);
@@ -71,6 +74,9 @@ public class Controlador implements ActionListener {
         this.win_login.salir_butt.addActionListener(this);
         this.win_baja_usuario.eliminar_butt.addActionListener(this);
         this.win_baja_usuario.cancelar_butt.addActionListener(this);
+        this.win_mod_usuario.cargar_butt.addActionListener(this);
+        this.win_mod_usuario.Mod_butt.addActionListener(this);
+        this.win_mod_usuario.cancelar_butt.addActionListener(this);
         this.win_baja_asignatura.eliminar_butt.addActionListener(this);
         this.win_baja_asignatura.cancelar_butt.addActionListener(this);
         this.win_alta_asignatura.crear_butt.addActionListener(this);
@@ -281,6 +287,125 @@ public class Controlador implements ActionListener {
         if (e.getSource() == win_baja_usuario.cancelar_butt) {
             win_baja_usuario.id_usuario_text.setText("");
             win_baja_usuario.setVisible(false);
+        }
+        
+        if (e.getSource() == win_principal_admin.mod_datos_usuario_menu) {
+            win_mod_usuario.setLocationRelativeTo(null);
+            win_mod_usuario.setVisible(true);
+        }
+        if (e.getSource() == win_mod_usuario.cancelar_butt) {
+            win_mod_usuario.setVisible(false);
+        }
+        
+        if (e.getSource() == win_mod_usuario.cargar_butt) {
+            
+            if (win_mod_usuario.admin_rButt.isSelected()) {
+                Administrador admin = Administrador.getInstance();
+                admin.setId(win_mod_usuario.id_text.getText());
+                try {
+                    consulta.consultaAdministrador(admin.getId());
+                } catch (SQLException ex) {
+                    Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                win_mod_usuario.login_text.setText(admin.getLogin());
+                win_mod_usuario.clave_text.setText(admin.getClave());
+                win_mod_usuario.email_text.setText(admin.getEmail());
+            }
+            
+            if (win_mod_usuario.alumno_rButt.isSelected()) {
+                Alumno alumno = Alumno.getInstance();
+                alumno.setId(win_mod_usuario.id_text.getText());
+                try {
+                    consulta.consultaAlumno(alumno.getId());
+                } catch (SQLException ex) {
+                    Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                win_mod_usuario.nivel_id_text.setText(alumno.getNivel_id());
+                win_mod_usuario.login_text.setText(alumno.getLogin());
+                win_mod_usuario.clave_text.setText(alumno.getContraseña());
+                win_mod_usuario.nombre_text.setText(alumno.getNombre());
+                win_mod_usuario.apellidos_text.setText(alumno.getApellidos());
+            }
+            
+            if (win_mod_usuario.profesor_rButt.isSelected()) {
+                Profesor profe = Profesor.getInstance();
+                profe.setId(win_mod_usuario.id_text.getText());
+                try {
+                    consulta.consultaProfesor(profe.getId());
+                } catch (SQLException ex) {
+                    Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                win_mod_usuario.login_text.setText(profe.getLogin());
+                win_mod_usuario.clave_text.setText(profe.getContraseña());
+                win_mod_usuario.nombre_text.setText(profe.getNombre());
+                win_mod_usuario.apellidos_text.setText(profe.getApellidos());
+                win_mod_usuario.email_text.setText(profe.getEmail());
+                win_mod_usuario.especialista_text.setText(profe.getEspecialista());
+            }    
+        }
+        
+        if (e.getSource() == win_mod_usuario.Mod_butt){
+            if (win_mod_usuario.admin_rButt.isSelected()){
+                Administrador admin = Administrador.getInstance();
+                admin.setId(win_mod_usuario.id_text.getText());
+                admin.setLogin(win_mod_usuario.login_text.getText());
+                admin.setClave(win_mod_usuario.clave_text.getText());
+                admin.setEmail(win_mod_usuario.email_text.getText());
+                boolean actualizar;
+                try {
+                    actualizar=update.updateAdministrador(admin.getId());
+                    if (actualizar == true) {
+                        JOptionPane.showMessageDialog(null, "Administrador actualizado con éxito", "Insert exitoso", JOptionPane.QUESTION_MESSAGE);
+                    } else {
+                        JOptionPane.showMessageDialog(null, "No se pudo actualizar el administrador", "Insert fallido", JOptionPane.QUESTION_MESSAGE);
+                    }
+                } catch (SQLException ex) {
+                    Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            
+            if (win_mod_usuario.alumno_rButt.isSelected()){
+                Alumno alumno = Alumno.getInstance();
+                alumno.setNivel_id(win_mod_usuario.nivel_id_text.getText());
+                alumno.setId(win_mod_usuario.id_text.getText());
+                alumno.setLogin(win_mod_usuario.login_text.getText());
+                alumno.setContraseña(win_mod_usuario.clave_text.getText());
+                alumno.setNombre(win_mod_usuario.nombre_text.getText());
+                alumno.setApellidos(win_mod_usuario.apellidos_text.getText());
+                boolean actualizar;
+                try {
+                    actualizar=update.updateAlumno(alumno.getId());
+                    if (actualizar == true) {
+                        JOptionPane.showMessageDialog(null, "Alumno actualizado con éxito", "Insert exitoso", JOptionPane.QUESTION_MESSAGE);
+                    } else {
+                        JOptionPane.showMessageDialog(null, "No se pudo actualizar el alumno", "Insert fallido", JOptionPane.QUESTION_MESSAGE);
+                    }
+                } catch (SQLException ex) {
+                    Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            
+            if (win_mod_usuario.profesor_rButt.isSelected()){
+                Profesor profe = Profesor.getInstance();
+                profe.setId(win_mod_usuario.id_text.getText());
+                profe.setLogin(win_mod_usuario.login_text.getText());
+                profe.setContraseña(win_mod_usuario.clave_text.getText());
+                profe.setNombre(win_mod_usuario.nombre_text.getText());
+                profe.setApellidos(win_mod_usuario.apellidos_text.getText());
+                profe.setEmail(win_mod_usuario.email_text.getText());
+                profe.setEspecialista(win_mod_usuario.especialista_text.getText());
+                boolean actualizar;
+                try {
+                    actualizar=update.updateProfesor(profe.getId());
+                    if (actualizar == true) {
+                        JOptionPane.showMessageDialog(null, "Profesor actualizado con éxito", "Insert exitoso", JOptionPane.QUESTION_MESSAGE);
+                    } else {
+                        JOptionPane.showMessageDialog(null, "No se pudo actualizar el profesor", "Insert fallido", JOptionPane.QUESTION_MESSAGE);
+                    }
+                } catch (SQLException ex) {
+                    Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
         }
 
         /*Eventos de Admin - Asignaturas
