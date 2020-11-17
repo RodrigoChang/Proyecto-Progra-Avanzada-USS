@@ -10,6 +10,7 @@ import Modelo.*;
 import Vistas.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -570,6 +571,25 @@ public class Controlador implements ActionListener {
         if (e.getSource() == win_principal_alumno.consultar_Notas){
             win_consultar_nota.setLocationRelativeTo(null);
             win_consultar_nota.setVisible(true);
+            Alumno alumno = Alumno.getInstance();
+            try {
+                ResultSet resultado = consulta.consultaMisAsignaturas(alumno.getId());
+                while(true){
+                    if(resultado.getRow() >0){
+                        String nombre = resultado.getString("asignatura.nombre");
+                        String id = resultado.getString("asignatura.id");
+                        win_consultar_nota.asignaturas_text_area.append("Nombre: ");
+                        win_consultar_nota.asignaturas_text_area.append(nombre);
+                        win_consultar_nota.asignaturas_text_area.append(" ID: ");
+                        win_consultar_nota.asignaturas_text_area.append(id);
+                        win_consultar_nota.asignaturas_text_area.append("\n");
+                        if(!resultado.next())
+                            break;
+                    }    
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         if (e.getSource() == win_consultar_nota.cancelar_butt){
             win_consultar_nota.setVisible(false);
@@ -577,6 +597,17 @@ public class Controlador implements ActionListener {
             win_consultar_nota.id_asignatura.setText("");
             win_consultar_nota.nota_label.setText("");
         }
+        
+        if (e.getSource() == win_consultar_nota.consultar_butt){
+            String id = win_consultar_nota.id_asignatura.getText();
+            Alumno alumno = Alumno.getInstance();
+            try {
+                win_consultar_nota.nota_label.setText(consulta.consultaNota(alumno.getId(), id));
+            } catch (SQLException ex) {
+                Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
         
         
         
