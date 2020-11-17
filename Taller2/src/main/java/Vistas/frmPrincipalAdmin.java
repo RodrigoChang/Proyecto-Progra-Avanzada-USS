@@ -36,7 +36,7 @@ public class frmPrincipalAdmin extends javax.swing.JFrame {
         usuarioMenu = new javax.swing.JMenu();
         alta_usuario_menu = new javax.swing.JMenuItem();
         baja_usuaio_menu = new javax.swing.JMenuItem();
-        mod_datos_usuario = new javax.swing.JMenuItem();
+        mod_datos_usuario_menu = new javax.swing.JMenuItem();
         AsignaturaMenu = new javax.swing.JMenu();
         alta_asignatura_menu = new javax.swing.JMenuItem();
         baja_asignatura_menu = new javax.swing.JMenuItem();
@@ -84,8 +84,8 @@ public class frmPrincipalAdmin extends javax.swing.JFrame {
         baja_usuaio_menu.setText("Baja Usuario");
         usuarioMenu.add(baja_usuaio_menu);
 
-        mod_datos_usuario.setText("Modificar Datos Usuario");
-        usuarioMenu.add(mod_datos_usuario);
+        mod_datos_usuario_menu.setText("Modificar Datos Usuario");
+        usuarioMenu.add(mod_datos_usuario_menu);
 
         menuBar.add(usuarioMenu);
 
@@ -185,7 +185,7 @@ public class frmPrincipalAdmin extends javax.swing.JFrame {
     public javax.swing.JMenuItem matricular_alumno_menu;
     private javax.swing.JMenuBar menuBar;
     public javax.swing.JMenuItem mod_datos_asignatura_menu;
-    public javax.swing.JMenuItem mod_datos_usuario;
+    public javax.swing.JMenuItem mod_datos_usuario_menu;
     private javax.swing.JMenu opcionesMenu;
     public javax.swing.JMenu usuarioMenu;
     // End of variables declaration//GEN-END:variables
