@@ -10,11 +10,11 @@ package Modelo;
  * @author Fabián
  */
 public class Administrador {
-    int id;
+    String id;
     String login, clave, email;
     private static Administrador instance;
 
-    public Administrador(int id, String login, String clave, String email) {
+    public Administrador(String id, String login, String clave, String email) {
         this.id = id;
         this.login = login;
         this.clave = clave;
@@ -25,11 +25,11 @@ public class Administrador {
     }
     
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
