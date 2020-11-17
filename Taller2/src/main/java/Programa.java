@@ -30,10 +30,12 @@ public class Programa {
         frmAltaAsignatura ventana_alta_asignatura = new frmAltaAsignatura();
         frmModAsignatura ventana_mod_asignatura = new frmModAsignatura();
         frmModUsuario ventana_mod_usuario = new frmModUsuario();
+        frmMatricularAlumno ventana_mat_alumno = new frmMatricularAlumno();
+        frmConsultarNota ventana_consultar_nota = new frmConsultarNota();
         
         Controlador controlador = new Controlador(login,insert,delete,consulta,update,ventana_login,
                 ventana_alta_usuario,ventana_principal_admin, ventana_principal_alumno,ventana_principal_profesor,
-                ventana_baja_usuario,ventana_baja_asignatura,ventana_alta_asignatura,ventana_mod_asignatura,ventana_mod_usuario);
+                ventana_baja_usuario,ventana_baja_asignatura,ventana_alta_asignatura,ventana_mod_asignatura,ventana_mod_usuario,ventana_mat_alumno,ventana_consultar_nota);
         controlador.Iniciar();
     }
 }

@@ -13,7 +13,6 @@ import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javafx.beans.value.ObservableValue;
 import javax.swing.JOptionPane;
 
 /**
@@ -37,12 +36,15 @@ public class Controlador implements ActionListener {
     frmBajaAsignatura win_baja_asignatura;
     frmAltaAsignatura win_alta_asignatura;
     frmModAsignatura win_mod_asignatura;
+    frmMatricularAlumno win_mat_alumno;
+    frmConsultarNota win_consultar_nota;
     String user_type;
 
     public Controlador(Login login, Insert insert, Delete delete, Consulta consulta, Update update,
             frmLogin win_login, frmAltaUsuario win_alta_usuario, frmPrincipalAdmin win_principal_admin,
             frmPrincipalAlumno win_principal_alumno, frmPrincipalProfesor win_principal_profesor, frmBajaUsuario win_baja_usuario,
-            frmBajaAsignatura win_baja_asignatura, frmAltaAsignatura win_alta_asignatura, frmModAsignatura win_mod_asignatura,frmModUsuario win_mod_usuario) {
+            frmBajaAsignatura win_baja_asignatura, frmAltaAsignatura win_alta_asignatura, frmModAsignatura win_mod_asignatura,
+            frmModUsuario win_mod_usuario,frmMatricularAlumno win_mat_alumno, frmConsultarNota win_consultar_nota) {
         
         this.login = login;
         this.insert = insert;
@@ -59,6 +61,8 @@ public class Controlador implements ActionListener {
         this.win_alta_asignatura = win_alta_asignatura;
         this.win_mod_asignatura = win_mod_asignatura;
         this.win_mod_usuario = win_mod_usuario;
+        this.win_mat_alumno = win_mat_alumno;
+        this.win_consultar_nota = win_consultar_nota;
         user_type = "";
         this.win_alta_usuario.alumno_rButt.addActionListener(this);
         this.win_alta_usuario.profesor_rButt.addActionListener(this);
@@ -68,6 +72,8 @@ public class Controlador implements ActionListener {
         this.win_principal_admin.alta_usuario_menu.addActionListener(this);
         this.win_principal_admin.mod_datos_usuario_menu.addActionListener(this);
         this.win_principal_admin.mod_datos_asignatura_menu.addActionListener(this);
+        this.win_principal_admin.matricular_alumno_menu.addActionListener(this);
+        this.win_principal_alumno.consultar_Notas.addActionListener(this);
         this.win_alta_usuario.crear_butt.addActionListener(this);
         this.win_alta_usuario.cancelar_butt.addActionListener(this);
         this.win_login.ingButton.addActionListener(this);
@@ -84,6 +90,10 @@ public class Controlador implements ActionListener {
         this.win_mod_asignatura.cargar_butt.addActionListener(this);
         this.win_mod_asignatura.modificar_butt.addActionListener(this);
         this.win_mod_asignatura.cancelar_butt.addActionListener(this);
+        this.win_mat_alumno.matricular_butt.addActionListener(this);
+        this.win_mat_alumno.cancelar_butt.addActionListener(this);
+        this.win_consultar_nota.cancelar_butt.addActionListener(this);
+        this.win_consultar_nota.consultar_butt.addActionListener(this);
     }
 
     public void Iniciar() {
@@ -93,6 +103,7 @@ public class Controlador implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        
         /*Eventos de LOGIN
         #######################################################################################################################################################################################
          */
@@ -100,7 +111,7 @@ public class Controlador implements ActionListener {
         if (e.getSource() == win_login.ingButton) {
             String usuario = win_login.txtUsuario.getText();
             String password = win_login.txtPassword.getText();
-            boolean logueo = false;
+            boolean logueo;
             if (win_login.admin_rButt.isSelected()) {
                 try {
                     logueo = login.loginAdmin(usuario, password);
@@ -150,7 +161,14 @@ public class Controlador implements ActionListener {
         if (e.getSource() == win_login.salir_butt) {
             System.exit(0);
         }
-
+        
+        /*#######################################################################################################################################################
+        #########################################################################################################################################################
+        ##########################################################Inicio Conotrolador para administrador#########################################################
+        #########################################################################################################################################################
+        #########################################################################################################################################################
+        */
+        
         /*Eventos de Admin - Usuarios
         #######################################################################################################################################################################################
          */
@@ -164,7 +182,7 @@ public class Controlador implements ActionListener {
                 usuario.setLogin(win_alta_usuario.login_text.getText());
                 usuario.setClave(win_alta_usuario.clave_text.getText());
                 usuario.setEmail(win_alta_usuario.email_text.getText());
-                boolean insertar = false;
+                boolean insertar;
                 try {
                     insertar = insert.insertarAdmin(usuario.getLogin(), usuario.getClave(), usuario.getEmail());
                     if (insertar == true) {
@@ -184,7 +202,7 @@ public class Controlador implements ActionListener {
                 usuario.setContraseña(win_alta_usuario.clave_text.getText());
                 usuario.setNombre(win_alta_usuario.nombre_text.getText());
                 usuario.setApellidos(win_alta_usuario.apellidos_text.getText());
-                boolean insertar = false;
+                boolean insertar;
                 try {
                     insertar = insert.insertarAlumno(usuario.getNivel_id(), usuario.getLogin(), usuario.getContraseña(), usuario.getNombre(), usuario.getApellidos());
                     if (insertar == true) {
@@ -205,7 +223,7 @@ public class Controlador implements ActionListener {
                 usuario.setApellidos(win_alta_usuario.apellidos_text.getText());
                 usuario.setEmail(win_alta_usuario.email_text.getText());
                 usuario.setEspecialista(win_alta_usuario.especialista_text.getText());
-                boolean insertar = false;
+                boolean insertar;
                 try {
                     insertar = insert.insertarProfesor(usuario.getLogin(), usuario.getContraseña(), usuario.getNombre(), usuario.getApellidos(), usuario.getEmail(), usuario.getEspecialista());
                     if (insertar == true) {
@@ -239,7 +257,7 @@ public class Controlador implements ActionListener {
         if (e.getSource() == win_baja_usuario.eliminar_butt) {
             if (win_baja_usuario.admin_rButt.isSelected()) {
                 String Id = win_baja_usuario.id_usuario_text.getText();
-                boolean eliminar = false;
+                boolean eliminar;
                 try {
                     eliminar = delete.deleteAdmin(Id);
                     if (eliminar == true) {
@@ -255,7 +273,7 @@ public class Controlador implements ActionListener {
         if (e.getSource() == win_baja_usuario.eliminar_butt) {
             if (win_baja_usuario.alumno_rButt.isSelected()) {
                 String Id = win_baja_usuario.id_usuario_text.getText();
-                boolean eliminar = false;
+                boolean eliminar;
                 try {
                     eliminar = delete.deleteAlumno(Id);
                     if (eliminar == true) {
@@ -271,7 +289,7 @@ public class Controlador implements ActionListener {
         if (e.getSource() == win_baja_usuario.eliminar_butt) {
             if (win_baja_usuario.profesor_rButt.isSelected()) {
                 String Id = win_baja_usuario.id_usuario_text.getText();
-                boolean eliminar = false;
+                boolean eliminar;
                 try {
                     eliminar = delete.deleteProfesor(Id);
                     if (eliminar == true) {
@@ -423,7 +441,7 @@ public class Controlador implements ActionListener {
 
         if (e.getSource() == win_baja_asignatura.eliminar_butt) {
             String Id = win_baja_asignatura.id_text.getText();
-            boolean eliminar = false;
+            boolean eliminar;
             try {
                 eliminar = delete.deleteAsignatura(Id);
                 if (eliminar == true) {
@@ -451,7 +469,7 @@ public class Controlador implements ActionListener {
             asignatura.setNivel_id(win_alta_asignatura.nivel_id_text.getText());
             asignatura.setProfesor_id(win_alta_asignatura.profesor_id_text.getText());
             asignatura.setNombre(win_alta_asignatura.nombre_text.getText());
-            boolean insertar = false;
+            boolean insertar;
             try {
                 insertar = insert.insertarAsignatura(asignatura.getNivel_id(), asignatura.getProfesor_id(), asignatura.getNombre());
                 if (insertar == true) {
@@ -508,5 +526,59 @@ public class Controlador implements ActionListener {
                 Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+        
+        if (e.getSource() == win_principal_admin.matricular_alumno_menu) {
+            win_mat_alumno.setLocationRelativeTo(null);
+            win_mat_alumno.setVisible(true);
+        }
+        
+        if (e.getSource() == win_mat_alumno.cancelar_butt){
+            win_mat_alumno.setVisible(false);
+            win_mat_alumno.id_alumno_text.setText("");
+            win_mat_alumno.id_asignatura_text.setText("");
+        }
+        
+        if (e.getSource() == win_mat_alumno.matricular_butt){
+            String id_alumno =win_mat_alumno.id_alumno_text.getText();
+            String id_asignatura = win_mat_alumno.id_asignatura_text.getText();
+            boolean inscribir = false;
+            try {
+                inscribir = insert.insertarMatricula(id_alumno, id_asignatura);
+                if (inscribir == true) {
+                    JOptionPane.showMessageDialog(null, "Alumno matriculado con éxito", "Insert exitoso", JOptionPane.QUESTION_MESSAGE);
+                } else {
+                    JOptionPane.showMessageDialog(null, "No se pudo matricular al alumno", "Insert fallido", JOptionPane.QUESTION_MESSAGE);
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        /*#######################################################################################################################################################
+        #########################################################################################################################################################
+        ##########################################################Fin Conotrolador para administrador############################################################
+        #########################################################################################################################################################
+        #########################################################################################################################################################
+        */
+        
+        /*#######################################################################################################################################################
+        #########################################################################################################################################################
+        ##########################################################Inicio Conotrolador para alumno################################################################
+        #########################################################################################################################################################
+        #########################################################################################################################################################
+        */
+        if (e.getSource() == win_principal_alumno.consultar_Notas){
+            win_consultar_nota.setLocationRelativeTo(null);
+            win_consultar_nota.setVisible(true);
+        }
+        if (e.getSource() == win_consultar_nota.cancelar_butt){
+            win_consultar_nota.setVisible(false);
+            win_consultar_nota.asignaturas_text_area.setText("");
+            win_consultar_nota.id_asignatura.setText("");
+            win_consultar_nota.nota_label.setText("");
+        }
+        
+        
+        
     }
 }
