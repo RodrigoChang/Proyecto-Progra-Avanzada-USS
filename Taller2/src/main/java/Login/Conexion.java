@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Login;  
-import java.sql.*;
+package Login;
 
+import java.sql.*;
 
 /**
  *
@@ -39,7 +39,7 @@ public class Conexion {
         return conexion;
     }
 
-    public void setConexion(Connection conexion){
+    public void setConexion(Connection conexion) {
         this.conexion = conexion;
     }
 
@@ -54,7 +54,7 @@ public class Conexion {
         }
         return resultado;
     }
-    
+
     public void insertar(String sql) {
         try {
             Statement sentencia = getConexion().createStatement();
@@ -63,17 +63,17 @@ public class Conexion {
             e.printStackTrace();
         }
     }
-    
-    public void eliminar(String sql){
+
+    public void eliminar(String sql) {
         try {
             Statement sentencia = getConexion().createStatement();
             sentencia.executeUpdate(sql);
-        }   catch (SQLException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }
-    
-    public void closeConexion() throws SQLException{
+
+    public void closeConexion() throws SQLException {
         conexion.close();
     }
 }
