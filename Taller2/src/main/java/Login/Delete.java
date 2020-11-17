@@ -5,8 +5,6 @@
  */
 package Login;
 
-import Modelo.Profesor;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 
 

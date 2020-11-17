@@ -30,6 +30,10 @@ public class frmPrincipalAlumno extends javax.swing.JFrame {
     private void initComponents() {
 
         desktopPane = new javax.swing.JDesktopPane();
+        nombre_text = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        mi_id_text = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         menuBar = new javax.swing.JMenuBar();
         fileMenu = new javax.swing.JMenu();
         exitMenuItem = new javax.swing.JMenuItem();
@@ -47,6 +51,28 @@ public class frmPrincipalAlumno extends javax.swing.JFrame {
         });
 
         desktopPane.setBackground(new java.awt.Color(0, 115, 202));
+
+        nombre_text.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        nombre_text.setForeground(new java.awt.Color(255, 255, 255));
+        desktopPane.add(nombre_text);
+        nombre_text.setBounds(140, 60, 330, 20);
+
+        jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("Mi Nombre:");
+        desktopPane.add(jLabel3);
+        jLabel3.setBounds(30, 60, 80, 19);
+
+        mi_id_text.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        mi_id_text.setForeground(new java.awt.Color(255, 255, 255));
+        desktopPane.add(mi_id_text);
+        mi_id_text.setBounds(140, 30, 150, 20);
+
+        jLabel1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("MI ID :");
+        desktopPane.add(jLabel1);
+        jLabel1.setBounds(30, 30, 60, 19);
 
         menuBar.setForeground(new java.awt.Color(0, 123, 247));
 
@@ -168,9 +194,13 @@ public class frmPrincipalAlumno extends javax.swing.JFrame {
     private javax.swing.JDesktopPane desktopPane;
     private javax.swing.JMenuItem exitMenuItem;
     private javax.swing.JMenu fileMenu;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel3;
     public javax.swing.JMenuItem listar_alumnos_menu;
     public javax.swing.JMenuItem listar_profesores_menu;
     private javax.swing.JMenuBar menuBar;
+    public javax.swing.JLabel mi_id_text;
+    public javax.swing.JLabel nombre_text;
     // End of variables declaration//GEN-END:variables
 
 }
