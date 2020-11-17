@@ -34,8 +34,8 @@ public class frmPrincipalAlumno extends javax.swing.JFrame {
         fileMenu = new javax.swing.JMenu();
         exitMenuItem = new javax.swing.JMenuItem();
         Alumnos = new javax.swing.JMenu();
-        Listar_alumnos_de_clase = new javax.swing.JMenuItem();
-        Listar_Profesores = new javax.swing.JMenuItem();
+        listar_alumnos_menu = new javax.swing.JMenuItem();
+        listar_profesores_menu = new javax.swing.JMenuItem();
         consultar_Notas = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -72,18 +72,18 @@ public class frmPrincipalAlumno extends javax.swing.JFrame {
         Alumnos.setMnemonic('e');
         Alumnos.setText("Alumnos");
 
-        Listar_alumnos_de_clase.setMnemonic('t');
-        Listar_alumnos_de_clase.setText("Listar alumnos de clase");
-        Alumnos.add(Listar_alumnos_de_clase);
+        listar_alumnos_menu.setMnemonic('t');
+        listar_alumnos_menu.setText("Listar alumnos de clase");
+        Alumnos.add(listar_alumnos_menu);
 
-        Listar_Profesores.setMnemonic('y');
-        Listar_Profesores.setText("Listar Profesores");
-        Listar_Profesores.addActionListener(new java.awt.event.ActionListener() {
+        listar_profesores_menu.setMnemonic('y');
+        listar_profesores_menu.setText("Listar Profesores");
+        listar_profesores_menu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Listar_ProfesoresActionPerformed(evt);
+                listar_profesores_menuActionPerformed(evt);
             }
         });
-        Alumnos.add(Listar_Profesores);
+        Alumnos.add(listar_profesores_menu);
 
         consultar_Notas.setText("Consultar notas");
         Alumnos.add(consultar_Notas);
@@ -118,9 +118,9 @@ public class frmPrincipalAlumno extends javax.swing.JFrame {
         // TODO add your handling code here:        
     }//GEN-LAST:event_formWindowOpened
 
-    private void Listar_ProfesoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Listar_ProfesoresActionPerformed
+    private void listar_profesores_menuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listar_profesores_menuActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Listar_ProfesoresActionPerformed
+    }//GEN-LAST:event_listar_profesores_menuActionPerformed
 
     /**
      * @param args the command line arguments
@@ -164,12 +164,12 @@ public class frmPrincipalAlumno extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu Alumnos;
-    public javax.swing.JMenuItem Listar_Profesores;
-    public javax.swing.JMenuItem Listar_alumnos_de_clase;
     public javax.swing.JMenuItem consultar_Notas;
     private javax.swing.JDesktopPane desktopPane;
     private javax.swing.JMenuItem exitMenuItem;
     private javax.swing.JMenu fileMenu;
+    public javax.swing.JMenuItem listar_alumnos_menu;
+    public javax.swing.JMenuItem listar_profesores_menu;
     private javax.swing.JMenuBar menuBar;
     // End of variables declaration//GEN-END:variables
 

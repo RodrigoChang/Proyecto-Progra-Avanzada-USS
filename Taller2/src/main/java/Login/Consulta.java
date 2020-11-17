@@ -66,6 +66,42 @@ public class Consulta {
         return null;
     }
     
+    public ResultSet consultaMisCompañeros(String ID)throws SQLException{
+        try{
+            Conexion conexion = new Conexion().obtener();
+            ResultSet resultado = conexion.consultar("SELECT alumno.nombre, alumno.apellidos FROM asignatura_has_alumno JOIN alumno ON asignatura_has_alumno.alumno_id = alumno.id WHERE asignatura_has_alumno.asignatura_id = '" +ID+ "'" );
+            resultado.next();
+            if (resultado.getRow() >0)
+              return resultado;
+            conexion.closeConexion();
+ 
+        } catch (SQLException e){
+            e.printStackTrace();
+            return null;
+        }
+        return null;
+    }
+    
+    public ResultSet consultaMisProfesores(String ID)throws SQLException{
+        try{
+            Conexion conexion = new Conexion().obtener();
+            ResultSet resultado = conexion.consultar("SELECT profesor.nombre, profesor.apellidos, asig1.nombre "
+                                                   + "FROM asignatura_has_alumno "
+                                                   + "JOIN asignatura AS asig1 ON asignatura_has_alumno.asignatura_id=asig1.id "
+                                                   + "JOIN profesor ON profesor.id = asig1.profesor_id "
+                                                   + "WHERE asignatura_has_alumno.alumno_id = '" +ID+ "'" );
+            resultado.next();
+            if (resultado.getRow() >0)
+              return resultado;
+            conexion.closeConexion();
+ 
+        } catch (SQLException e){
+            e.printStackTrace();
+            return null;
+        }
+        return null;
+    }
+    
     public boolean consultaAdministrador(String ID)throws SQLException{
         try{
             Conexion conexion = new Conexion().obtener();
