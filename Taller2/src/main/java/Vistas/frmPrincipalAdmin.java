@@ -30,6 +30,10 @@ public class frmPrincipalAdmin extends javax.swing.JFrame {
     private void initComponents() {
 
         desktopPane = new javax.swing.JDesktopPane();
+        jLabel1 = new javax.swing.JLabel();
+        mi_id_text = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        mi_correo_text = new javax.swing.JLabel();
         menuBar = new javax.swing.JMenuBar();
         opcionesMenu = new javax.swing.JMenu();
         exitMenuItem = new javax.swing.JMenuItem();
@@ -52,6 +56,28 @@ public class frmPrincipalAdmin extends javax.swing.JFrame {
         });
 
         desktopPane.setBackground(new java.awt.Color(0, 115, 202));
+
+        jLabel1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("MI ID :");
+        desktopPane.add(jLabel1);
+        jLabel1.setBounds(30, 30, 60, 19);
+
+        mi_id_text.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        mi_id_text.setForeground(new java.awt.Color(255, 255, 255));
+        desktopPane.add(mi_id_text);
+        mi_id_text.setBounds(140, 30, 150, 20);
+
+        jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("Mi Email:");
+        desktopPane.add(jLabel3);
+        jLabel3.setBounds(30, 60, 80, 19);
+
+        mi_correo_text.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        mi_correo_text.setForeground(new java.awt.Color(255, 255, 255));
+        desktopPane.add(mi_correo_text);
+        mi_correo_text.setBounds(140, 60, 330, 20);
 
         menuBar.setForeground(new java.awt.Color(0, 123, 247));
 
@@ -112,7 +138,7 @@ public class frmPrincipalAdmin extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1024, Short.MAX_VALUE)
+            .addComponent(desktopPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1024, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -182,8 +208,12 @@ public class frmPrincipalAdmin extends javax.swing.JFrame {
     public javax.swing.JMenuItem baja_usuaio_menu;
     private javax.swing.JDesktopPane desktopPane;
     private javax.swing.JMenuItem exitMenuItem;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel3;
     public javax.swing.JMenuItem matricular_alumno_menu;
     private javax.swing.JMenuBar menuBar;
+    public javax.swing.JLabel mi_correo_text;
+    public javax.swing.JLabel mi_id_text;
     public javax.swing.JMenuItem mod_datos_asignatura_menu;
     public javax.swing.JMenuItem mod_datos_usuario_menu;
     private javax.swing.JMenu opcionesMenu;
