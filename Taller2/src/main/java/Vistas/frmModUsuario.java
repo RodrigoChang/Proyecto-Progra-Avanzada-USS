@@ -26,6 +26,7 @@ public class frmModUsuario extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        user_type_group = new javax.swing.ButtonGroup();
         jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         admin_rButt = new javax.swing.JRadioButton();
@@ -33,8 +34,8 @@ public class frmModUsuario extends javax.swing.JFrame {
         profesor_rButt = new javax.swing.JRadioButton();
         jLabel7 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        id_text = new javax.swing.JTextField();
+        cargar_butt = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         nivel_id_text = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
@@ -45,16 +46,22 @@ public class frmModUsuario extends javax.swing.JFrame {
         nombre_text = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         apellidos_text = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        cancelar_butt = new javax.swing.JButton();
+        Mod_butt = new javax.swing.JButton();
+        jLabel9 = new javax.swing.JLabel();
+        email_text = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
+        especialista_text = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel1.setText("Modificar Usuario");
 
+        user_type_group.add(admin_rButt);
         admin_rButt.setText("Administrador");
 
+        user_type_group.add(alumno_rButt);
         alumno_rButt.setText("Alumno");
         alumno_rButt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -62,6 +69,7 @@ public class frmModUsuario extends javax.swing.JFrame {
             }
         });
 
+        user_type_group.add(profesor_rButt);
         profesor_rButt.setText("Profesor");
 
         jLabel7.setText("Selecciona tipo de usuario a cargar y modificar");
@@ -97,10 +105,10 @@ public class frmModUsuario extends javax.swing.JFrame {
 
         jLabel2.setText("ID");
 
-        jButton1.setText("Cargar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        cargar_butt.setText("Cargar");
+        cargar_butt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                cargar_buttActionPerformed(evt);
             }
         });
 
@@ -126,9 +134,13 @@ public class frmModUsuario extends javax.swing.JFrame {
 
         jLabel8.setText("Apellidos");
 
-        jButton2.setText("Cancelar");
+        cancelar_butt.setText("Cancelar");
 
-        jButton3.setText("Modificar");
+        Mod_butt.setText("Modificar");
+
+        jLabel9.setText("Email");
+
+        jLabel10.setText("Especialista");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -144,9 +156,9 @@ public class frmModUsuario extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel2)
                                 .addGap(18, 18, 18)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(id_text, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(jButton1)))
+                                .addComponent(cargar_butt)))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -164,9 +176,17 @@ public class frmModUsuario extends javax.swing.JFrame {
                             .addComponent(nivel_id_text)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton3)
+                        .addComponent(Mod_butt)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton2)))
+                        .addComponent(cancelar_butt))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel9)
+                            .addComponent(jLabel10))
+                        .addGap(26, 26, 26)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(email_text)
+                            .addComponent(especialista_text))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -179,8 +199,8 @@ public class frmModUsuario extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
+                    .addComponent(id_text, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cargar_butt))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(nivel_id_text, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -201,10 +221,18 @@ public class frmModUsuario extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(apellidos_text, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3))
+                    .addComponent(email_text, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel9))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(especialista_text, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel10))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cancelar_butt)
+                    .addComponent(Mod_butt))
                 .addContainerGap())
         );
 
@@ -215,9 +243,9 @@ public class frmModUsuario extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_alumno_rButtActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void cargar_buttActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cargar_buttActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_cargar_buttActionPerformed
 
     private void nivel_id_textActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nivel_id_textActionPerformed
         // TODO add your handling code here:
@@ -263,14 +291,18 @@ public class frmModUsuario extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JButton Mod_butt;
     public javax.swing.JRadioButton admin_rButt;
     public javax.swing.JRadioButton alumno_rButt;
     public javax.swing.JTextField apellidos_text;
+    public javax.swing.JButton cancelar_butt;
+    public javax.swing.JButton cargar_butt;
     public javax.swing.JTextField clave_text;
-    public javax.swing.JButton jButton1;
-    public javax.swing.JButton jButton2;
-    public javax.swing.JButton jButton3;
+    public javax.swing.JTextField email_text;
+    public javax.swing.JTextField especialista_text;
+    public javax.swing.JTextField id_text;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -278,12 +310,13 @@ public class frmModUsuario extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    public javax.swing.JTextField jTextField1;
     public javax.swing.JTextField login_text;
     public javax.swing.JTextField nivel_id_text;
     public javax.swing.JTextField nombre_text;
     public javax.swing.JRadioButton profesor_rButt;
+    private javax.swing.ButtonGroup user_type_group;
     // End of variables declaration//GEN-END:variables
 
 }
