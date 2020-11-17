@@ -10,6 +10,7 @@ import Modelo.*;
 import Vistas.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -38,13 +39,17 @@ public class Controlador implements ActionListener {
     frmModAsignatura win_mod_asignatura;
     frmMatricularAlumno win_mat_alumno;
     frmConsultarNota win_consultar_nota;
+    frmListarAlumnos win_listar_alumnos;
+    frmListarProfesores win_listar_profesores;
     String user_type;
 
+    @SuppressWarnings("LeakingThisInConstructor")
     public Controlador(Login login, Insert insert, Delete delete, Consulta consulta, Update update,
             frmLogin win_login, frmAltaUsuario win_alta_usuario, frmPrincipalAdmin win_principal_admin,
             frmPrincipalAlumno win_principal_alumno, frmPrincipalProfesor win_principal_profesor, frmBajaUsuario win_baja_usuario,
             frmBajaAsignatura win_baja_asignatura, frmAltaAsignatura win_alta_asignatura, frmModAsignatura win_mod_asignatura,
-            frmModUsuario win_mod_usuario,frmMatricularAlumno win_mat_alumno, frmConsultarNota win_consultar_nota) {
+            frmModUsuario win_mod_usuario,frmMatricularAlumno win_mat_alumno, frmConsultarNota win_consultar_nota,
+            frmListarAlumnos win_listar_alumnos,frmListarProfesores win_listar_profesores) {
         
         this.login = login;
         this.insert = insert;
@@ -63,6 +68,8 @@ public class Controlador implements ActionListener {
         this.win_mod_usuario = win_mod_usuario;
         this.win_mat_alumno = win_mat_alumno;
         this.win_consultar_nota = win_consultar_nota;
+        this.win_listar_alumnos = win_listar_alumnos;
+        this.win_listar_profesores=win_listar_profesores;
         user_type = "";
         this.win_alta_usuario.alumno_rButt.addActionListener(this);
         this.win_alta_usuario.profesor_rButt.addActionListener(this);
@@ -74,6 +81,8 @@ public class Controlador implements ActionListener {
         this.win_principal_admin.mod_datos_asignatura_menu.addActionListener(this);
         this.win_principal_admin.matricular_alumno_menu.addActionListener(this);
         this.win_principal_alumno.consultar_Notas.addActionListener(this);
+        this.win_principal_alumno.listar_alumnos_menu.addActionListener(this);
+        this.win_principal_alumno.listar_profesores_menu.addActionListener(this);
         this.win_alta_usuario.crear_butt.addActionListener(this);
         this.win_alta_usuario.cancelar_butt.addActionListener(this);
         this.win_login.ingButton.addActionListener(this);
@@ -94,6 +103,9 @@ public class Controlador implements ActionListener {
         this.win_mat_alumno.cancelar_butt.addActionListener(this);
         this.win_consultar_nota.cancelar_butt.addActionListener(this);
         this.win_consultar_nota.consultar_butt.addActionListener(this);
+        this.win_listar_alumnos.cancelar_butt.addActionListener(this);
+        this.win_listar_alumnos.consultar_butt.addActionListener(this);
+        this.win_listar_profesores.cancelar_butt.addActionListener(this);
     }
 
     public void Iniciar() {
@@ -541,7 +553,7 @@ public class Controlador implements ActionListener {
         if (e.getSource() == win_mat_alumno.matricular_butt){
             String id_alumno =win_mat_alumno.id_alumno_text.getText();
             String id_asignatura = win_mat_alumno.id_asignatura_text.getText();
-            boolean inscribir = false;
+            boolean inscribir;
             try {
                 inscribir = insert.insertarMatricula(id_alumno, id_asignatura);
                 if (inscribir == true) {
@@ -570,6 +582,25 @@ public class Controlador implements ActionListener {
         if (e.getSource() == win_principal_alumno.consultar_Notas){
             win_consultar_nota.setLocationRelativeTo(null);
             win_consultar_nota.setVisible(true);
+            Alumno alumno = Alumno.getInstance();
+            try {
+                ResultSet resultado = consulta.consultaMisAsignaturas(alumno.getId());
+                while(true){
+                    if(resultado.getRow() >0){
+                        String nombre = resultado.getString("asignatura.nombre");
+                        String id = resultado.getString("asignatura.id");
+                        win_consultar_nota.asignaturas_text_area.append("Nombre: ");
+                        win_consultar_nota.asignaturas_text_area.append(nombre);
+                        win_consultar_nota.asignaturas_text_area.append(" ID: ");
+                        win_consultar_nota.asignaturas_text_area.append(id);
+                        win_consultar_nota.asignaturas_text_area.append("\n");
+                        if(!resultado.next())
+                            break;
+                    }    
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         if (e.getSource() == win_consultar_nota.cancelar_butt){
             win_consultar_nota.setVisible(false);
@@ -578,7 +609,98 @@ public class Controlador implements ActionListener {
             win_consultar_nota.nota_label.setText("");
         }
         
+        if (e.getSource() == win_consultar_nota.consultar_butt){
+            String id = win_consultar_nota.id_asignatura.getText();
+            Alumno alumno = Alumno.getInstance();
+            try {
+                win_consultar_nota.nota_label.setText(consulta.consultaNota(alumno.getId(), id));
+            } catch (SQLException ex) {
+                Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
         
+        if (e.getSource() == win_principal_alumno.listar_alumnos_menu){
+            win_listar_alumnos.setLocationRelativeTo(null);
+            win_listar_alumnos.setVisible(true);
+            Alumno alumno = Alumno.getInstance();
+            try {
+                ResultSet resultado = consulta.consultaMisAsignaturas(alumno.getId());
+                while(true){
+                    if(resultado.getRow() >0){
+                        String nombre = resultado.getString("asignatura.nombre");
+                        String id = resultado.getString("asignatura.id");
+                        win_listar_alumnos.asignaturas_text_area.append("Nombre: ");
+                        win_listar_alumnos.asignaturas_text_area.append(nombre);
+                        win_listar_alumnos.asignaturas_text_area.append(" ID: ");
+                        win_listar_alumnos.asignaturas_text_area.append(id);
+                        win_listar_alumnos.asignaturas_text_area.append("\n");
+                        if(!resultado.next())
+                            break;
+                    }    
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        if (e.getSource() == win_listar_alumnos.cancelar_butt){
+            win_listar_alumnos.setVisible(false);
+            win_listar_alumnos.asignaturas_text_area.setText("");
+            win_listar_alumnos.id_asignatura.setText("");
+            win_listar_alumnos.compañeros_text_area.setText("");
+        }
+        
+        if (e.getSource() == win_listar_alumnos.consultar_butt){
+            win_listar_alumnos.compañeros_text_area.setText("");
+            String id = win_listar_alumnos.id_asignatura.getText();
+            try {
+                ResultSet resultado = consulta.consultaMisCompañeros(id);
+                while(true){
+                    if(resultado.getRow() >0){
+                        String nombre = resultado.getString("alumno.nombre");
+                        String apellido = resultado.getString("alumno.apellidos");
+                        win_listar_alumnos.compañeros_text_area.append(nombre);
+                        win_listar_alumnos.compañeros_text_area.append(" ");
+                        win_listar_alumnos.compañeros_text_area.append(apellido);
+                        win_listar_alumnos.compañeros_text_area.append("\n");
+                        if(!resultado.next())
+                            break;
+                    }    
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        if (e.getSource() == win_listar_profesores.cancelar_butt){
+            win_listar_profesores.setVisible(false);
+            win_listar_profesores.profesores_text_area.setText("");
+        }
+        
+        if (e.getSource() == win_principal_alumno.listar_profesores_menu){
+            win_listar_profesores.setLocationRelativeTo(null);
+            win_listar_profesores.setVisible(true);
+            Alumno alumno = Alumno.getInstance();
+            try {
+                ResultSet resultado = consulta.consultaMisProfesores(alumno.getId());
+                while(true){
+                    if(resultado.getRow() >0){
+                        String nombre_asignatura = resultado.getString("asig1.nombre");
+                        String nombre_profesor = resultado.getString("profesor.nombre");
+                        String apellidos_profesor = resultado.getString("profesor.apellidos");
+                        win_listar_profesores.profesores_text_area.append(nombre_profesor);
+                        win_listar_profesores.profesores_text_area.append(" ");
+                        win_listar_profesores.profesores_text_area.append(apellidos_profesor);
+                        win_listar_profesores.profesores_text_area.append(" ");
+                        win_listar_profesores.profesores_text_area.append(nombre_asignatura);
+                        win_listar_profesores.profesores_text_area.append("\n");
+                        if(!resultado.next())
+                            break;
+                    }    
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
         
     }
 }

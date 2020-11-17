@@ -8,7 +8,6 @@ package Login;
 import Modelo.*;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
 /**
  *
  * @author Fabián
@@ -32,6 +31,75 @@ public class Consulta {
             return false;
         }
         return false;
+    }
+    
+    public String consultaNota(String id_alumno, String id_asignatura)throws SQLException{
+        try{
+            Conexion conexion = new Conexion().obtener();
+            ResultSet resultado = conexion.consultar("SELECT nota FROM asignatura_has_alumno WHERE alumno_id = '" +id_alumno+ "' and asignatura_id = '" +id_asignatura+ "'");
+            resultado.next();
+            if (resultado.getRow() >0){
+              String nota =resultado.getString("nota");
+              conexion.closeConexion();
+              return nota;
+            }
+        } catch (SQLException e){
+            e.printStackTrace();
+            return null;
+        }
+        return null;
+    }
+    
+    public ResultSet consultaMisAsignaturas(String ID)throws SQLException{
+        try{
+            Conexion conexion = new Conexion().obtener();
+            ResultSet resultado = conexion.consultar("SELECT asignatura.id, asignatura.nombre FROM asignatura_has_alumno JOIN asignatura ON asignatura_has_alumno.asignatura_id=asignatura.id WHERE asignatura_has_alumno.alumno_id = '" +ID+ "'" );
+            resultado.next();
+            if (resultado.getRow() >0)
+              return resultado;
+            conexion.closeConexion();
+ 
+        } catch (SQLException e){
+            e.printStackTrace();
+            return null;
+        }
+        return null;
+    }
+    
+    public ResultSet consultaMisCompañeros(String ID)throws SQLException{
+        try{
+            Conexion conexion = new Conexion().obtener();
+            ResultSet resultado = conexion.consultar("SELECT alumno.nombre, alumno.apellidos FROM asignatura_has_alumno JOIN alumno ON asignatura_has_alumno.alumno_id = alumno.id WHERE asignatura_has_alumno.asignatura_id = '" +ID+ "'" );
+            resultado.next();
+            if (resultado.getRow() >0)
+              return resultado;
+            conexion.closeConexion();
+ 
+        } catch (SQLException e){
+            e.printStackTrace();
+            return null;
+        }
+        return null;
+    }
+    
+    public ResultSet consultaMisProfesores(String ID)throws SQLException{
+        try{
+            Conexion conexion = new Conexion().obtener();
+            ResultSet resultado = conexion.consultar("SELECT profesor.nombre, profesor.apellidos, asig1.nombre "
+                                                   + "FROM asignatura_has_alumno "
+                                                   + "JOIN asignatura AS asig1 ON asignatura_has_alumno.asignatura_id=asig1.id "
+                                                   + "JOIN profesor ON profesor.id = asig1.profesor_id "
+                                                   + "WHERE asignatura_has_alumno.alumno_id = '" +ID+ "'" );
+            resultado.next();
+            if (resultado.getRow() >0)
+              return resultado;
+            conexion.closeConexion();
+ 
+        } catch (SQLException e){
+            e.printStackTrace();
+            return null;
+        }
+        return null;
     }
     
     public boolean consultaAdministrador(String ID)throws SQLException{
