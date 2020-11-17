@@ -43,5 +43,12 @@ public class Insert {
         return true;
     }
     
+    public boolean insertarMatricula(String alumno_id, String asignatura_id) throws SQLException{
+        Conexion conexion = new Conexion().obtener();
+        conexion.insertar("INSERT INTO db.asignatura_has_alumno (asignatura_id,alumno_id) VALUES ('"+asignatura_id+"','"+alumno_id+"')");
+        conexion.closeConexion();
+        return true;
+    }
+    
 }
   

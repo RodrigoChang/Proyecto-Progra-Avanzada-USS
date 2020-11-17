@@ -10,7 +10,6 @@ import java.sql.*;
 /**
  *
  * @author rodrigo - modifications to use with Oracle Database
- * @original author www.programaresfacil.cl
  */
 public class Conexion {
 
@@ -26,9 +25,9 @@ public class Conexion {
             setConexion(DriverManager.getConnection(url, user, password));
 
             if (getConexion() != null) {
-                System.out.println("Bienvenido");
+                System.out.println("Conexion a BBDD Exitosa");
             } else {
-                System.out.println("Conexión Fallida");
+                System.out.println("Conexión a BBDD Fallida");
             }
         } catch (Exception e) {
             e.printStackTrace();

@@ -6,7 +6,6 @@
 package Login;
 
 import Modelo.*;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
@@ -34,6 +33,14 @@ public class Update {
             conexion.insertar("UPDATE db.alumno SET nivel_id = '"+alumno.getNivel_id()+"', login = '"+ alumno.getLogin() +"', clave = '"+ alumno.getContraseña() +"',nombre = '"+alumno.getNombre()+"',apellidos='"+alumno.getApellidos()+"' WHERE (id = '"+ ID +"')");
             return true;
         }
+        
+        public boolean updateNota(String id_asignatura, String id_alumno, String nota)throws SQLException{
+            Conexion conexion = new Conexion().obtener();
+            conexion.insertar("UPDATE db.asignatura_has_alumno SET nota = '"+ nota +"' WHERE (asignatura_id = '"+id_asignatura+"') and (alumno_id = '"+ id_alumno +"')");
+
+            return true;
+        }
+        
         public boolean updateProfesor(String ID)throws SQLException{
             Conexion conexion = new Conexion().obtener();
             Profesor profe = Profesor.getInstance();
