@@ -31,21 +31,33 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Profesores"/>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+          </AuxValues>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="Listar_Profesores">
+            <MenuItem class="javax.swing.JMenuItem" name="listar_profesores_menu">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Listar Profesores"/>
               </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+              </AuxValues>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="Poner_notas">
+            <MenuItem class="javax.swing.JMenuItem" name="poner_notas_menu">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Poner Notas"/>
               </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+              </AuxValues>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="Listar_Alumnos">
+            <MenuItem class="javax.swing.JMenuItem" name="listar_alumnos_menu">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Listar Alumnos"/>
               </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+              </AuxValues>
             </MenuItem>
           </SubComponents>
         </Menu>

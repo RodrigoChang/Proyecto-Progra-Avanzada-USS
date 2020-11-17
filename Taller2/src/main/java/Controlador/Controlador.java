@@ -41,6 +41,9 @@ public class Controlador implements ActionListener {
     frmConsultarNota win_consultar_nota;
     frmListarAlumnos win_listar_alumnos;
     frmListarProfesores win_listar_profesores;
+    frmListarAlumnos2 win_listar_alumnos2;
+    frmListarProfesores2 win_listar_profesores2;
+    frmPonerNotas win_poner_notas;
     String user_type;
 
     @SuppressWarnings("LeakingThisInConstructor")
@@ -49,27 +52,31 @@ public class Controlador implements ActionListener {
             frmPrincipalAlumno win_principal_alumno, frmPrincipalProfesor win_principal_profesor, frmBajaUsuario win_baja_usuario,
             frmBajaAsignatura win_baja_asignatura, frmAltaAsignatura win_alta_asignatura, frmModAsignatura win_mod_asignatura,
             frmModUsuario win_mod_usuario,frmMatricularAlumno win_mat_alumno, frmConsultarNota win_consultar_nota,
-            frmListarAlumnos win_listar_alumnos,frmListarProfesores win_listar_profesores) {
+            frmListarAlumnos win_listar_alumnos,frmListarProfesores win_listar_profesores, frmListarAlumnos2 win_listar_alumnos2,
+            frmListarProfesores2 win_listar_profesores2,frmPonerNotas win_poner_notas) {
         
-        this.login = login;
-        this.insert = insert;
-        this.delete = delete;
-        this.consulta = consulta;
-        this.update = update;
-        this.win_login = win_login;
-        this.win_alta_usuario = win_alta_usuario;
-        this.win_principal_admin = win_principal_admin;
-        this.win_principal_alumno = win_principal_alumno;
+        this.login                  = login;
+        this.insert                 = insert;
+        this.delete                 = delete;
+        this.consulta               = consulta;
+        this.update                 = update;
+        this.win_login              = win_login;
+        this.win_alta_usuario       = win_alta_usuario;
+        this.win_principal_admin    = win_principal_admin;
+        this.win_principal_alumno   = win_principal_alumno;
         this.win_principal_profesor = win_principal_profesor;
-        this.win_baja_usuario = win_baja_usuario;
-        this.win_baja_asignatura = win_baja_asignatura;
-        this.win_alta_asignatura = win_alta_asignatura;
-        this.win_mod_asignatura = win_mod_asignatura;
-        this.win_mod_usuario = win_mod_usuario;
-        this.win_mat_alumno = win_mat_alumno;
-        this.win_consultar_nota = win_consultar_nota;
-        this.win_listar_alumnos = win_listar_alumnos;
-        this.win_listar_profesores=win_listar_profesores;
+        this.win_baja_usuario       = win_baja_usuario;
+        this.win_baja_asignatura    = win_baja_asignatura;
+        this.win_alta_asignatura    = win_alta_asignatura;
+        this.win_mod_asignatura     = win_mod_asignatura;
+        this.win_mod_usuario        = win_mod_usuario;
+        this.win_mat_alumno         = win_mat_alumno;
+        this.win_consultar_nota     = win_consultar_nota;
+        this.win_listar_alumnos     = win_listar_alumnos;
+        this.win_listar_profesores  = win_listar_profesores;
+        this.win_listar_alumnos2    = win_listar_alumnos2;
+        this.win_listar_profesores2 = win_listar_profesores2;
+        this.win_poner_notas        = win_poner_notas;
         user_type = "";
         this.win_alta_usuario.alumno_rButt.addActionListener(this);
         this.win_alta_usuario.profesor_rButt.addActionListener(this);
@@ -83,6 +90,9 @@ public class Controlador implements ActionListener {
         this.win_principal_alumno.consultar_Notas.addActionListener(this);
         this.win_principal_alumno.listar_alumnos_menu.addActionListener(this);
         this.win_principal_alumno.listar_profesores_menu.addActionListener(this);
+        this.win_principal_profesor.listar_alumnos_menu.addActionListener(this);
+        this.win_principal_profesor.listar_profesores_menu.addActionListener(this);
+        this.win_principal_profesor.poner_notas_menu.addActionListener(this);
         this.win_alta_usuario.crear_butt.addActionListener(this);
         this.win_alta_usuario.cancelar_butt.addActionListener(this);
         this.win_login.ingButton.addActionListener(this);
@@ -106,6 +116,13 @@ public class Controlador implements ActionListener {
         this.win_listar_alumnos.cancelar_butt.addActionListener(this);
         this.win_listar_alumnos.consultar_butt.addActionListener(this);
         this.win_listar_profesores.cancelar_butt.addActionListener(this);
+        this.win_listar_alumnos2.cancelar_butt.addActionListener(this);
+        this.win_listar_alumnos2.consultar_butt.addActionListener(this);
+        this.win_listar_profesores2.cancelar_butt.addActionListener(this);
+        this.win_poner_notas.asignar_nota_butt.addActionListener(this);
+        this.win_poner_notas.cancelar_butt.addActionListener(this);
+        this.win_poner_notas.consultar_butt.addActionListener(this);
+        
     }
 
     public void Iniciar() {
@@ -176,7 +193,7 @@ public class Controlador implements ActionListener {
         
         /*#######################################################################################################################################################
         #########################################################################################################################################################
-        ##########################################################Inicio Conotrolador para administrador#########################################################
+        ##########################################################Inicio Controlador para administrador##########################################################
         #########################################################################################################################################################
         #########################################################################################################################################################
         */
@@ -568,14 +585,14 @@ public class Controlador implements ActionListener {
         
         /*#######################################################################################################################################################
         #########################################################################################################################################################
-        ##########################################################Fin Conotrolador para administrador############################################################
+        ##########################################################Fin Controlador para administrador#############################################################
         #########################################################################################################################################################
         #########################################################################################################################################################
         */
         
         /*#######################################################################################################################################################
         #########################################################################################################################################################
-        ##########################################################Inicio Conotrolador para alumno################################################################
+        ##########################################################Inicio Controlador para alumno#################################################################
         #########################################################################################################################################################
         #########################################################################################################################################################
         */
@@ -701,6 +718,185 @@ public class Controlador implements ActionListener {
                 Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+        
+        /*#######################################################################################################################################################
+        #########################################################################################################################################################
+        ##########################################################Fin Controlador para alumno####################################################################
+        #########################################################################################################################################################
+        #########################################################################################################################################################
+        */
+        
+        /*#######################################################################################################################################################
+        #########################################################################################################################################################
+        ##########################################################Inicio Controlador para profesor###############################################################
+        #########################################################################################################################################################
+        #########################################################################################################################################################
+        */
+        if (e.getSource() == win_principal_profesor.listar_profesores_menu){
+            win_listar_profesores2.setLocationRelativeTo(null);
+            win_listar_profesores2.setVisible(true);
+            try {
+                ResultSet resultado = consulta.consultaProfesores();
+                while(true){
+                    if(resultado.getRow() >0){
+                        String nombre_profesor = resultado.getString("profesor.nombre");
+                        String apellidos_profesor = resultado.getString("profesor.apellidos");
+                        win_listar_profesores2.profesores_text_area.append(nombre_profesor);
+                        win_listar_profesores2.profesores_text_area.append(" ");
+                        win_listar_profesores2.profesores_text_area.append(apellidos_profesor);
+                        win_listar_profesores2.profesores_text_area.append("\n");
+                        if(!resultado.next())
+                            break;
+                    }    
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        if (e.getSource() == win_listar_profesores2.cancelar_butt){
+            win_listar_profesores2.setVisible(false);
+            win_listar_profesores2.profesores_text_area.setText("");
+        }
+        
+        
+        if (e.getSource() == win_principal_profesor.listar_alumnos_menu){
+            win_listar_alumnos2.setLocationRelativeTo(null);
+            win_listar_alumnos2.setVisible(true);
+            Profesor profe = Profesor.getInstance();
+            try {
+                ResultSet resultado = consulta.consultaMisAsignaturasProfe(profe.getId());
+                while(true){
+                    if(resultado.getRow() >0){
+                        String nombre = resultado.getString("asignatura.nombre");
+                        String id = resultado.getString("asignatura.id");
+                        win_listar_alumnos2.asignaturas_text_area.append("ID: ");
+                        win_listar_alumnos2.asignaturas_text_area.append(id);
+                        win_listar_alumnos2.asignaturas_text_area.append(" Nombre: ");
+                        win_listar_alumnos2.asignaturas_text_area.append(nombre);
+                        win_listar_alumnos2.asignaturas_text_area.append("\n");
+                        if(!resultado.next())
+                            break;
+                    }    
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        if (e.getSource() == win_listar_alumnos2.cancelar_butt){
+            win_listar_alumnos2.setVisible(false);
+            win_listar_alumnos2.asignaturas_text_area.setText("");
+        }
+        
+        if (e.getSource() == win_listar_alumnos2.consultar_butt){
+            String id_asignatura =win_listar_alumnos2.id_asignatura.getText();
+            win_listar_alumnos2.compañeros_text_area.setText("");
+            try {
+                ResultSet resultado = consulta.consultaMisCompañeros(id_asignatura);
+                while(true){
+                    if(resultado.getRow() >0){
+                        String nombre = resultado.getString("alumno.nombre");
+                        String apellidos = resultado.getString("alumno.apellidos");
+                        win_listar_alumnos2.compañeros_text_area.append(nombre);
+                        win_listar_alumnos2.compañeros_text_area.append(" ");
+                        win_listar_alumnos2.compañeros_text_area.append(apellidos);
+                        win_listar_alumnos2.compañeros_text_area.append("\n");
+                        if(!resultado.next())
+                            break;
+                    }    
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+
+        
+        if (e.getSource() == win_principal_profesor.poner_notas_menu){
+            win_poner_notas.setLocationRelativeTo(null);
+            win_poner_notas.setVisible(true);
+            Profesor profe = Profesor.getInstance();
+            try {
+                ResultSet resultado = consulta.consultaMisAsignaturasProfe(profe.getId());
+                while(true){
+                    if(resultado.getRow() >0){
+                        String nombre = resultado.getString("asignatura.nombre");
+                        String id = resultado.getString("asignatura.id");
+                        win_poner_notas.asignaturas_text_area.append("ID: ");
+                        win_poner_notas.asignaturas_text_area.append(id);
+                        win_poner_notas.asignaturas_text_area.append(" Nombre: ");
+                        win_poner_notas.asignaturas_text_area.append(nombre);
+                        win_poner_notas.asignaturas_text_area.append("\n");
+                        if(!resultado.next())
+                            break;
+                    }    
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        if (e.getSource() == win_poner_notas.cancelar_butt){
+            win_poner_notas.setVisible(false);
+            win_poner_notas.asignaturas_text_area.setText("");
+            win_poner_notas.compañeros_text_area.setText("");
+            win_poner_notas.id_alumno_text.setText("");
+            win_poner_notas.nota_text.setText("");
+        }
+        
+        if (e.getSource() == win_poner_notas.consultar_butt){
+            String id_asignatura =win_poner_notas.id_asignatura.getText();
+            win_poner_notas.compañeros_text_area.setText("");
+            try {
+                ResultSet resultado = consulta.consultaMisCompañeros(id_asignatura);
+                while(true){
+                    if(resultado.getRow() >0){
+                        String nombre = resultado.getString("alumno.nombre");
+                        String apellidos = resultado.getString("alumno.apellidos");
+                        String id = resultado.getString("alumno.id");
+                        win_poner_notas.compañeros_text_area.append("ID: ");
+                        win_poner_notas.compañeros_text_area.append(id);
+                        win_poner_notas.compañeros_text_area.append(" ");
+                        win_poner_notas.compañeros_text_area.append(nombre);
+                        win_poner_notas.compañeros_text_area.append(" ");
+                        win_poner_notas.compañeros_text_area.append(apellidos);
+                        win_poner_notas.compañeros_text_area.append("\n");
+                        if(!resultado.next())
+                            break;
+                    }    
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        if (e.getSource() == win_poner_notas.asignar_nota_butt){
+            String id_asignatura =win_poner_notas.id_asignatura.getText();
+            String id_alumno = win_poner_notas.id_alumno_text.getText();
+            String nota =win_poner_notas.nota_text.getText();
+            boolean actualizar;
+            try {
+                actualizar =update.updateNota(id_asignatura, id_alumno, nota);
+                if (actualizar == true) {
+                    JOptionPane.showMessageDialog(null, "Nota actualizada con éxito", "Insert exitoso", JOptionPane.QUESTION_MESSAGE);
+                } else {
+                    JOptionPane.showMessageDialog(null, "No se pudo actualizar la Nota", "Insert fallido", JOptionPane.QUESTION_MESSAGE);
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        
+        
+        
+        
+        /*#######################################################################################################################################################
+        #########################################################################################################################################################
+        ##########################################################Fin Controlador para profesor##################################################################
+        #########################################################################################################################################################
+        #########################################################################################################################################################
+        */
         
     }
 }
