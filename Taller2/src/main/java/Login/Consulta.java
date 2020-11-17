@@ -175,6 +175,63 @@ public class Consulta {
         }
         return false;
     }
+    
+    public String consultaIdAdministrador(String login, String clave, String email) throws SQLException {
+        try {
+            String id="";
+            Conexion conexion = new Conexion().obtener();
+            ResultSet resultado = conexion.consultar("SELECT id "
+                                                   + "FROM administrador WHERE login = '" + login + "' and clave = '"+clave+"' and email = '"+email+"' ");
+            resultado.next();
+            if (resultado.getRow() > 0) {
+                id =resultado.getString("id");
+                conexion.closeConexion();
+                return id;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+        return null;
+    }
+    
+    public String consultaIdAlumno(String nivel, String login, String clave, String nombre, String apellidos) throws SQLException {
+        try {
+            String id="";
+            Conexion conexion = new Conexion().obtener();
+            ResultSet resultado = conexion.consultar("SELECT id "
+                                                   + "FROM alumno WHERE nivel_id = '" + nivel + "' and login = '"+login+"' and clave = '"+clave+"' and nombre = '"+nombre+"' and apellidos = '"+apellidos+"' ");
+            resultado.next();
+            if (resultado.getRow() > 0) {
+                id =resultado.getString("id");
+                conexion.closeConexion();
+                return id;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+        return null;
+    }
+    
+    public String consultaIdProfesor(String login, String clave, String nombre, String apellidos, String email, String especialista) throws SQLException {
+        try {
+            String id="";
+            Conexion conexion = new Conexion().obtener();
+            ResultSet resultado = conexion.consultar("SELECT id "
+                                                   + "FROM profesor WHERE login = '" + login + "' and clave = '"+clave+"' and nombre = '"+nombre+"' and apellidos = '"+apellidos+"' and email = '"+email+"' and especialista = '"+especialista+"'");
+            resultado.next();
+            if (resultado.getRow() > 0) {
+                id =resultado.getString("id");
+                conexion.closeConexion();
+                return id;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+        return null;
+    }
 
     public boolean consultaAlumno(String ID) throws SQLException {
         try {

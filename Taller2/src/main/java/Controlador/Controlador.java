@@ -226,7 +226,8 @@ public class Controlador implements ActionListener {
                 try {
                     insertar = insert.insertarAdmin(usuario.getLogin(), usuario.getClave(), usuario.getEmail());
                     if (insertar == true) {
-                        JOptionPane.showMessageDialog(null, "Administrador Creado con éxito", "Insert exitoso", JOptionPane.QUESTION_MESSAGE);
+                        String id = consulta.consultaIdAdministrador(usuario.getLogin(), usuario.getClave(), usuario.getEmail());
+                        JOptionPane.showMessageDialog(null, "Administrador Creado con éxito con ID: "+id, "Insert exitoso", JOptionPane.QUESTION_MESSAGE);
                     } else {
                         JOptionPane.showMessageDialog(null, "No se pudo crear el administrador", "Insert fallido", JOptionPane.QUESTION_MESSAGE);
                     }
@@ -246,7 +247,8 @@ public class Controlador implements ActionListener {
                 try {
                     insertar = insert.insertarAlumno(usuario.getNivel_id(), usuario.getLogin(), usuario.getContraseña(), usuario.getNombre(), usuario.getApellidos());
                     if (insertar == true) {
-                        JOptionPane.showMessageDialog(null, "Alumno Creado con éxito", "Insert exitoso", JOptionPane.QUESTION_MESSAGE);
+                        String id = consulta.consultaIdAlumno(usuario.getNivel_id(),usuario.getLogin(),usuario.getContraseña(),usuario.getNombre(),usuario.getApellidos());
+                        JOptionPane.showMessageDialog(null, "Alumno Creado con éxito con ID: "+id, "Insert exitoso", JOptionPane.QUESTION_MESSAGE);
                     } else {
                         JOptionPane.showMessageDialog(null, "No se pudo crear el Alumno", "Insert fallido", JOptionPane.QUESTION_MESSAGE);
                     }
@@ -267,7 +269,8 @@ public class Controlador implements ActionListener {
                 try {
                     insertar = insert.insertarProfesor(usuario.getLogin(), usuario.getContraseña(), usuario.getNombre(), usuario.getApellidos(), usuario.getEmail(), usuario.getEspecialista());
                     if (insertar == true) {
-                        JOptionPane.showMessageDialog(null, "Profesor Creado con éxito", "Insert exitoso", JOptionPane.QUESTION_MESSAGE);
+                        String id = consulta.consultaIdProfesor(usuario.getLogin(), usuario.getContraseña(), usuario.getNombre(), usuario.getApellidos(), usuario.getEmail(),usuario.getEspecialista() );
+                        JOptionPane.showMessageDialog(null, "Profesor Creado con éxito con ID: "+id, "Insert exitoso", JOptionPane.QUESTION_MESSAGE);
                     } else {
                         JOptionPane.showMessageDialog(null, "No se pudo crear el profesor", "Insert fallido", JOptionPane.QUESTION_MESSAGE);
                     }
