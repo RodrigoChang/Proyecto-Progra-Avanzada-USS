@@ -10,12 +10,12 @@ package Modelo;
  * @author Fabián
  */
 public class Alumno {
-    private int id;
+    private String id;
     private Nivel nivel;
     private String login, contraseña, nombre, apellidos,nivel_id;
     private static Alumno instance;
 
-    public Alumno(int id, Nivel nivel, String login, String contraseña, String nombre, String apellidos) {
+    public Alumno(String id, Nivel nivel, String login, String contraseña, String nombre, String apellidos) {
         this.id = id;
         this.nivel = nivel;
         this.login = login;
@@ -27,11 +27,11 @@ public class Alumno {
     public Alumno() {
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 

@@ -19,10 +19,11 @@ public class Login {
             resultado.next();
             if (resultado.getRow() >0){
                 Administrador usuarioactual = Administrador.getInstance();
-              usuarioactual.setId(resultado.getInt("id"));
+              usuarioactual.setId(resultado.getString("id"));
               usuarioactual.setLogin(resultado.getString("login"));
               usuarioactual.setClave(resultado.getString("clave"));
               usuarioactual.setEmail(resultado.getString("email"));
+              conexion.closeConexion();
               return true;
             }
         } catch (SQLException e){
@@ -38,12 +39,13 @@ public class Login {
             resultado.next();
             if (resultado.getRow() >0){
                 Alumno usuarioactual = Alumno.getInstance();
-              usuarioactual.setId(resultado.getInt("id"));
+              usuarioactual.setId(resultado.getString("id"));
               usuarioactual.setNivel_id(resultado.getString("nivel_id"));
               usuarioactual.setLogin(resultado.getString("login"));
               usuarioactual.setContraseña(resultado.getString("clave"));
               usuarioactual.setNombre(resultado.getString("nombre"));
               usuarioactual.setApellidos(resultado.getString("apellidos"));
+              conexion.closeConexion();
               return true;
             }
         } catch (SQLException e){
@@ -60,13 +62,14 @@ public class Login {
             resultado.next();
             if (resultado.getRow() >0){
                 Profesor usuarioactual = Profesor.getInstance();
-              usuarioactual.setId(resultado.getInt("id"));
+              usuarioactual.setId(resultado.getString("id"));
               usuarioactual.setLogin(resultado.getString("login"));
               usuarioactual.setContraseña(resultado.getString("clave"));
               usuarioactual.setNombre(resultado.getString("nombre"));
               usuarioactual.setApellidos(resultado.getString("apellidos"));
               usuarioactual.setEmail(resultado.getString("email"));
               usuarioactual.setEspecialista(resultado.getString("especialista"));
+              conexion.closeConexion();
               return true;
             }
         } catch (SQLException e){

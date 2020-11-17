@@ -36,7 +36,7 @@ public class frmPrincipalAdmin extends javax.swing.JFrame {
         usuarioMenu = new javax.swing.JMenu();
         alta_usuario_menu = new javax.swing.JMenuItem();
         baja_usuaio_menu = new javax.swing.JMenuItem();
-        mod_datos_usuario = new javax.swing.JMenuItem();
+        mod_datos_usuario_menu = new javax.swing.JMenuItem();
         AsignaturaMenu = new javax.swing.JMenu();
         alta_asignatura_menu = new javax.swing.JMenuItem();
         baja_asignatura_menu = new javax.swing.JMenuItem();
@@ -84,8 +84,8 @@ public class frmPrincipalAdmin extends javax.swing.JFrame {
         baja_usuaio_menu.setText("Baja Usuario");
         usuarioMenu.add(baja_usuaio_menu);
 
-        mod_datos_usuario.setText("Modificar Datos Usuario");
-        usuarioMenu.add(mod_datos_usuario);
+        mod_datos_usuario_menu.setText("Modificar Datos Usuario");
+        usuarioMenu.add(mod_datos_usuario_menu);
 
         menuBar.add(usuarioMenu);
 
@@ -112,11 +112,11 @@ public class frmPrincipalAdmin extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 710, Short.MAX_VALUE)
+            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1024, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 426, Short.MAX_VALUE)
+            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 597, Short.MAX_VALUE)
         );
 
         pack();
@@ -175,19 +175,19 @@ public class frmPrincipalAdmin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu AsignaturaMenu;
-    private javax.swing.JMenuItem alta_asignatura_menu;
+    public javax.swing.JMenu AsignaturaMenu;
+    public javax.swing.JMenuItem alta_asignatura_menu;
     public javax.swing.JMenuItem alta_usuario_menu;
-    private javax.swing.JMenuItem baja_asignatura_menu;
-    private javax.swing.JMenuItem baja_usuaio_menu;
+    public javax.swing.JMenuItem baja_asignatura_menu;
+    public javax.swing.JMenuItem baja_usuaio_menu;
     private javax.swing.JDesktopPane desktopPane;
     private javax.swing.JMenuItem exitMenuItem;
-    private javax.swing.JMenuItem matricular_alumno_menu;
+    public javax.swing.JMenuItem matricular_alumno_menu;
     private javax.swing.JMenuBar menuBar;
-    private javax.swing.JMenuItem mod_datos_asignatura_menu;
-    private javax.swing.JMenuItem mod_datos_usuario;
+    public javax.swing.JMenuItem mod_datos_asignatura_menu;
+    public javax.swing.JMenuItem mod_datos_usuario_menu;
     private javax.swing.JMenu opcionesMenu;
-    private javax.swing.JMenu usuarioMenu;
+    public javax.swing.JMenu usuarioMenu;
     // End of variables declaration//GEN-END:variables
 
 }

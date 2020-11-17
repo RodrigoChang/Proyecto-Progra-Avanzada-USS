@@ -34,9 +34,9 @@ public class frmPrincipalProfesor extends javax.swing.JFrame {
         fileMenu = new javax.swing.JMenu();
         exitMenuItem = new javax.swing.JMenuItem();
         Profesores = new javax.swing.JMenu();
-        Listar_Profesores = new javax.swing.JMenuItem();
-        Poner_notas = new javax.swing.JMenuItem();
-        Listar_Alumnos = new javax.swing.JMenuItem();
+        listar_profesores_menu = new javax.swing.JMenuItem();
+        poner_notas_menu = new javax.swing.JMenuItem();
+        listar_alumnos_menu = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setName("Software de Ventas"); // NOI18N
@@ -71,14 +71,14 @@ public class frmPrincipalProfesor extends javax.swing.JFrame {
 
         Profesores.setText("Profesores");
 
-        Listar_Profesores.setText("Listar Profesores");
-        Profesores.add(Listar_Profesores);
+        listar_profesores_menu.setText("Listar Profesores");
+        Profesores.add(listar_profesores_menu);
 
-        Poner_notas.setText("Poner Notas");
-        Profesores.add(Poner_notas);
+        poner_notas_menu.setText("Poner Notas");
+        Profesores.add(poner_notas_menu);
 
-        Listar_Alumnos.setText("Listar Alumnos");
-        Profesores.add(Listar_Alumnos);
+        listar_alumnos_menu.setText("Listar Alumnos");
+        Profesores.add(listar_alumnos_menu);
 
         menuBar.add(Profesores);
 
@@ -88,11 +88,11 @@ public class frmPrincipalProfesor extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 710, Short.MAX_VALUE)
+            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1024, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 426, Short.MAX_VALUE)
+            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 577, Short.MAX_VALUE)
         );
 
         pack();
@@ -151,14 +151,14 @@ public class frmPrincipalProfesor extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenuItem Listar_Alumnos;
-    private javax.swing.JMenuItem Listar_Profesores;
-    private javax.swing.JMenuItem Poner_notas;
-    private javax.swing.JMenu Profesores;
+    public javax.swing.JMenu Profesores;
     private javax.swing.JDesktopPane desktopPane;
     private javax.swing.JMenuItem exitMenuItem;
     private javax.swing.JMenu fileMenu;
+    public javax.swing.JMenuItem listar_alumnos_menu;
+    public javax.swing.JMenuItem listar_profesores_menu;
     private javax.swing.JMenuBar menuBar;
+    public javax.swing.JMenuItem poner_notas_menu;
     // End of variables declaration//GEN-END:variables
 
 }
