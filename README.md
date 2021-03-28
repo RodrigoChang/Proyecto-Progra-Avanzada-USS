@@ -1,4 +1,4 @@
-# Solemne 2 Programación Avanzada
+# Solemne 2 - Programación Avanzada USS 2020
 
 ## Integrantes
 * Rodrigo Chang
